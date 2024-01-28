@@ -1,11 +1,12 @@
 import React from 'react';
 import * as S from './Main.styled';
+import Header from './Header';
 
 export default function Main(){
    return (
       <S.Wrapper>
          <S.Container>
-            <h1>메인이요</h1>
+            <Header />
          </S.Container>
       </S.Wrapper>        
       
