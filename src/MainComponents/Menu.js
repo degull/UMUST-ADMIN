@@ -37,10 +37,10 @@ export default function Menu(){
                   <Link to="/board/Notice"> - 공지사항</Link>
                </S.Notice> 
                <S.Press>
-                  <Link to="/board/Notice"> - 공지사항</Link>
+                  <Link to="/board/Press"> - 보도자료</Link>
                </S.Press> 
                <S.Event>
-                  <Link to="/board/Evnet"> - 행사정보</Link>
+                  <Link to="/board/Event"> - 행사정보</Link>
                </S.Event>
                <S.Album>
                   <Link to="/board/Album"> - 앨범</Link>

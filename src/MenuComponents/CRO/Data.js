@@ -1,10 +1,15 @@
 import React from 'react';
+import * as S from './Data.styled';
+import Main from '../../MainComponents/Main';
 
 export default function Data(){
    return (
-      <div>
-         자료실
-      </div>
+      <>
+         <Main />
+         <S.Container>
+            자료실
+         </S.Container>
+      </>
    );
 };
 
