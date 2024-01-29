@@ -49,24 +49,14 @@ const Notice = () => {
           <Link to="/Board/notices/create">글쓰기</Link>
         </S.Category1>
 
+
         <S.Category2>
-          게시판
+          {/* "게시판" 링크를 "/Board/notices"로 변경 */}
+          <Link to="/Board/notices">게시판</Link>
         </S.Category2>
 
-        <Routes>
-          <Route
-            path="/Board/notices/:id"
-            element={<NoticeDetail onDelete={handleDeleteNotice} onEdit={handleEditNotice} />}
-          />
-          <Route
-            path="/Board/notices"
-            element={<NoticeBoard notices={sampleNotices} onSelectNotice={(noticeId) => navigate(`/Board/notices/${noticeId}`)} />}
-          />
-          <Route
-            path="/Board/notices/create"
-            element={<NoticeForm onCreate={handleCreateNotice} />}
-          />
-        </Routes>
+
+
       </S.Container>
     </>
   );

@@ -16,6 +16,8 @@ import Press from './MenuComponents/Board/Press/Press';
 import Event from './MenuComponents/Board/Event/Event';
 import Album from './MenuComponents/Board/Album/Album';
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
+import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
+
 
 export default function App() {
   return (
@@ -38,9 +40,10 @@ export default function App() {
         {/* 알림마당 */}
         <Route path="/Board/notice" element={<Notice />} />
 
-        {/* -공지사항 */}
+       {/* -공지사항 */}
+        <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
         <Route path="/Board/notices/create" element={<NoticeForm />} />
-        
+
       
         <Route path="/Board/press" element={<Press />} />
         <Route path="/Board/event" element={<Event />} />

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+// NoticeBoard.js
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './Notice.styled';
 
@@ -7,22 +8,20 @@ const formatDate = (timestamp) => {
   return new Date(timestamp).toLocaleString('en-US', options);
 };
 
-const NoticeBoard = ({ onSelectNotice }) => {
-  const [notices, setNotices] = useState([]);
+const NoticeBoard = ({ onCreate }) => {
+  // 가짜 데이터 (테스트용)
+  const [notices, setNotices] = useState([
+    { id: 1, title: '첫 번째 공지', content: '첫 번째 공지사항 내용입니다.', author: '관리자1', timestamp: Date.now() },
+    { id: 2, title: '두 번째 공지', content: '두 번째 공지사항 내용입니다.', author: '관리자2', timestamp: Date.now() - 3600000 }, // 1시간 전
+    // ... 더 많은 가짜 데이터 추가 가능
+  ]);
 
-  useEffect(() => {
-    // 실제 백엔드 API 호출
-    fetch('/api/notices') // API 엔드포인트를 적절히 변경해야 합니다.
-      .then(response => response.json())
-      .then(data => setNotices(data))
-      .catch(error => console.error('Error fetching notices:', error));
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
-
+  // 가짜 데이터로 공지사항 목록 표시
   return (
     <S.NoticeBoard>
       {notices.map(notice => (
-        <Link to={`/notices/${notice.id}`} key={notice.id}>
-          <S.NoticeItem onClick={() => onSelectNotice(notice.id)}>
+        <Link to={`/Board/notices/${notice.id}`} key={notice.id}>
+          <S.NoticeItem>
             <S.NoticeTitle>{notice.title}</S.NoticeTitle>
             <S.NoticeContent>{notice.content}</S.NoticeContent>
             <S.NoticeDetails>

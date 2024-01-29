@@ -131,8 +131,12 @@ export const FormTitle = styled.div`
 
 export const FormInput = styled.input`
   width: 100%;
+  height: 38px;
   padding: 8px;
   margin-bottom: 20px;
+  border-radius:4px;
+ /*  border-color: #999; */
+
 `;
 
 export const FormTextarea = styled.textarea`
