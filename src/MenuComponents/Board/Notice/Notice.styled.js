@@ -1,4 +1,3 @@
-// Notice.styled.js
 import styled from "@emotion/styled";
 import 'react-quill/dist/quill.snow.css';
 
@@ -135,7 +134,6 @@ export const FormInput = styled.input`
   padding: 8px;
   margin-bottom: 20px;
   border-radius:4px;
- /*  border-color: #999; */
 
 `;
 

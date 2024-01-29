@@ -2,10 +2,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Main from './MainComponents/Main';
-import Paper from './MenuComponents/Research/Paper';
-import Patent from './MenuComponents/Research/Patent';
-import Certification from './MenuComponents/Research/Certification';
-import Blog from './MenuComponents/Research/Blog';
+import Paper from './MenuComponents/Research/Paper/Paper';
+import Patent from './MenuComponents/Research/Patent/Patent';
+import Certification from './MenuComponents/Research/Certification/Certification';
+import Blog from './MenuComponents/Research/Blog/Blog';
 
 import Info from './MenuComponents/Product/Info';
 

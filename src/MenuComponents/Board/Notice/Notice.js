@@ -28,7 +28,7 @@ const Notice = () => {
   const handleCreateNotice = (newNotice) => {
     // 공지 생성 로직 구현
     console.log('Creating new notice:', newNotice);
-    // 실제로는 여기서 서버로 Notice를 생성하는 API 호출이 필요합니다.
+    // 서버로 Notice를 생성하는 API 호출
   };
 
   const sampleNotices = [
@@ -44,14 +44,13 @@ const Notice = () => {
       <Main />
       <S.Container>
         <S.Title>공지사항</S.Title>
-
+{/*  */}
         <S.Category1>
           <Link to="/Board/notices/create">글쓰기</Link>
         </S.Category1>
 
 
         <S.Category2>
-          {/* "게시판" 링크를 "/Board/notices"로 변경 */}
           <Link to="/Board/notices">게시판</Link>
         </S.Category2>
 

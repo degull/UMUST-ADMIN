@@ -1,6 +1,8 @@
 import React from 'react';
+import Main from '../../../MainComponents/Main';
 import * as S from './Paper.styled';
-import Main from '../../MainComponents/Main';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+
 
 export default function Paper(){
    return (
@@ -8,7 +10,7 @@ export default function Paper(){
          <Main />
          <S.Container>
             <S.Title>논문</S.Title>
-
+{/*  */}
             <S.WriteContainer>
 
                <S.Category1>
@@ -17,7 +19,6 @@ export default function Paper(){
 
             </S.WriteContainer>
 
-            {/*  */}
 
             <S.ListContainer>
                <S.Category2>

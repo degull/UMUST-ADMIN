@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../../MainComponents/Main';
+import Main from '../../../MainComponents/Main';
 import * as S from './Blog.styled';
 
 
