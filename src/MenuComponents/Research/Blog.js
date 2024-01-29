@@ -8,7 +8,7 @@ export default function Blog(){
       <>
          <Main />
          <S.Container>
-            연구소 이야기
+            <S.Title>연구소 이야기</S.Title>
          </S.Container>
       </>
    );

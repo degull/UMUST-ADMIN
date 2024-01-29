@@ -1,21 +1,21 @@
-
 // Import necessary dependencies
 import React from 'react';
-import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Main from './MainComponents/Main';
 import Paper from './MenuComponents/Research/Paper';
-import Patent  from './MenuComponents/Research/Patent';
-import Certification  from './MenuComponents/Research/Certification';
-import Blog  from './MenuComponents/Research/Blog';
+import Patent from './MenuComponents/Research/Patent';
+import Certification from './MenuComponents/Research/Certification';
+import Blog from './MenuComponents/Research/Blog';
 
 import Info from './MenuComponents/Product/Info';
 
 import Data from './MenuComponents/CRO/Data';
 
-import Notice from './MenuComponents/Board/Notice';
-import Press from './MenuComponents/Board/Press';
-import Event from './MenuComponents/Board/Event';
-import Album from './MenuComponents/Board/Album';
+import Notice from './MenuComponents/Board/Notice/Notice';
+import Press from './MenuComponents/Board/Press/Press';
+import Event from './MenuComponents/Board/Event/Event';
+import Album from './MenuComponents/Board/Album/Album';
+import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 
 export default function App() {
   return (
@@ -37,10 +37,14 @@ export default function App() {
 
         {/* 알림마당 */}
         <Route path="/Board/notice" element={<Notice />} />
+
+        {/* -공지사항 */}
+        <Route path="/Board/notices/create" element={<NoticeForm />} />
+        
+      
         <Route path="/Board/press" element={<Press />} />
         <Route path="/Board/event" element={<Event />} />
         <Route path="/Board/album" element={<Album />} />
-
 
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../../MainComponents/Main';
+import Main from '../../../MainComponents/Main';
 import * as S from './Album.styled';
 
 export default function Album(){
@@ -7,7 +7,7 @@ export default function Album(){
       <>
          <Main />
          <S.Container>
-            앨범
+            <S.Title>앨범</S.Title>
          </S.Container>
       </>
    );

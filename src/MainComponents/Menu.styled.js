@@ -42,6 +42,17 @@ export const Paper = styled.div`
    cursor: pointer;
 `;
 
+// 글쓰기
+export const Write = styled.div`
+   font-size: 11px;
+   margin: 15px 0 0 10px;
+`;
+
+// 게시판
+export const List = styled.div`
+
+`;
+
 // 특허
 export const Patent = styled.div`
    font-size: 11px;

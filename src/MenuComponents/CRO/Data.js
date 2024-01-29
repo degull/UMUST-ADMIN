@@ -7,7 +7,7 @@ export default function Data(){
       <>
          <Main />
          <S.Container>
-            자료실
+            <S.Title>자료실</S.Title>
          </S.Container>
       </>
    );

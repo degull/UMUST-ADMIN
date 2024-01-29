@@ -7,7 +7,7 @@ export default function Patent(){
       <>
          <Main />
          <S.Container>
-            특허
+            <S.Title>특허</S.Title>
          </S.Container>
          
       </>

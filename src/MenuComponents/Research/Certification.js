@@ -8,7 +8,7 @@ export default function Certification(){
       <>
          <Main />
          <S.Container>
-            인증현황
+            <S.Title>인증현황</S.Title>
          </S.Container>
       </>
    );

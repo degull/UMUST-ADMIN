@@ -7,7 +7,7 @@ export default function Info(){
       <>
          <Main />
          <S.Container>
-            관련정보
+            <S.Title>관련정보</S.Title>
          </S.Container>
       </>
    );
