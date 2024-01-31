@@ -39,13 +39,43 @@ export const Category2 = styled.div`
 `;
 
 export const NoticeBoard = styled.div`
-  margin-top: 20px;
+
+`;
+
+export const NoticeHeader = styled.div`
+   display: flex;
+   background: #f5f4d3;
+   padding: 10px;
+   margin: 0 auto;
+   max-width: 1000px;
+   border: 1px solid #dddddd;
+   
+`;
+
+export const PostListLabel = styled.div`
+   font-size: 16px;
+   font-weight: bold;
+   flex: 1;
+   padding: 3px;
 `;
 
 export const NoticeItem = styled.div`
-  border: 1px solid #ddd;
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
   padding: 10px;
-  margin-bottom: 10px;
+  align-items: center;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
+export const ItemContent = styled.div`
+  flex: 1;
+`;
+
+export const ItemActions = styled.div`
+  margin-left: 10px;
 `;
 
 export const NoticeTitle = styled.div`
