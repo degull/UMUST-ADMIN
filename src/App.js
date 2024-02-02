@@ -14,8 +14,12 @@ import Notice from './MenuComponents/Board/Notice/Notice';
 import Press from './MenuComponents/Board/Press/Press';
 import Event from './MenuComponents/Board/Event/Event';
 import Album from './MenuComponents/Board/Album/Album';
+// 공지사항
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
+// 행사정보
+import EventBoard from './MenuComponents/Board/Event/EventBoard';
+import EventForm from './MenuComponents/Board/Event/EventForm';
 
 
 export default function App() {
@@ -38,16 +42,19 @@ export default function App() {
 
         {/* 알림마당 */}
         <Route path="/Board/notice" element={<Notice />} />
+        <Route path="/Board/event" element={<Event />} />
+        <Route path="/Board/press" element={<Press />} />
+        <Route path="/Board/album" element={<Album />} />
 
        {/* -공지사항 */}
         <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
         <Route path="/Board/notices/create" element={<NoticeForm />} />
 
-      
-        <Route path="/Board/press" element={<Press />} />
-        <Route path="/Board/event" element={<Event />} />
-        <Route path="/Board/album" element={<Album />} />
+        {/* -행사정보 */}
+        <Route path="/Board/events" element={<EventBoard />} />
+        <Route path="/Board/events/create" element={<EventForm />} />
 
+    
       </Routes>
     </BrowserRouter>
   );

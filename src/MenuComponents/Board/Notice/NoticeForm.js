@@ -22,7 +22,7 @@ const NoticeForm = () => {
       files[0].type === 'image/jpeg' ||
       files[0].type === 'image/jpg'
     ) {
-      // Update the URL to the correct image upload endpoint
+      
       axios.post('http://eb-umust.umust302.shop/api/images', formData, { headers }).then(function (response) {
         let imageName = response.data;
 
@@ -60,17 +60,30 @@ const NoticeForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Update the URL to the correct articles API endpoint
-    axios.post('http://eb-umust.umust302.shop/api/articles', { content: markdownContent })
+  
+    const titleInput = document.querySelector('input[type="text"]');
+    const title = titleInput.value.trim(); 
+  
+    if (!title || !markdownContent.trim()) {
+      alert('제목과 본문을 모두 입력해주세요.');
+      return; 
+    }
+  
+    const articleData = {
+      title: title,
+      content: markdownContent,
+      category: 'NOTICE',
+    };
+  
+    axios.post('http://eb-umust.umust302.shop/api/articles', articleData)
       .then(function (response) {
-        // Handle the response if needed
         console.log('Article submitted successfully:', response.data);
       })
       .catch(function (error) {
-        // Handle errors
         console.error('Error submitting article:', error);
       });
   };
+  
 
   return (
     <S.NoticeFormContainer>
@@ -112,7 +125,6 @@ const NoticeForm = () => {
           </S.FormButton>
         </S.NoticeForm>
 
-        {/* Render the Markdown preview */}
         <S.MarkdownPreviewContainer>
           <h2>Markdown Preview</h2>
           <S.NoticeContent>{markdownContent}</S.NoticeContent>
