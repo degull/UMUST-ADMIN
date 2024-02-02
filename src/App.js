@@ -20,6 +20,8 @@ import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
 // 행사정보
 import EventBoard from './MenuComponents/Board/Event/EventBoard';
 import EventForm from './MenuComponents/Board/Event/EventForm';
+import PressBoard from './MenuComponents/Board/Press/PressBoard';
+import PressForm from './MenuComponents/Board/Press/PressForm';
 
 
 export default function App() {
@@ -53,6 +55,11 @@ export default function App() {
         {/* -행사정보 */}
         <Route path="/Board/events" element={<EventBoard />} />
         <Route path="/Board/events/create" element={<EventForm />} />
+
+        {/* -보도자료 */}
+        <Route path="/Board/presses" element={<PressBoard />} />
+        <Route path="/Board/presses/create" element={<PressForm />} />
+
 
     
       </Routes>

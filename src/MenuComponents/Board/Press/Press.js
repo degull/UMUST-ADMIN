@@ -1,28 +1,46 @@
-// Press.js
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
-import Main from '../../../MainComponents/Main';
-import PressList from './PressList';
-import PressDetail from './PressDetail';
-import PressForm from './PressForm';
 import * as S from './Press.styled';
+import Main from '../../../MainComponents/Main';
+import PressDetail from './PressDetail';
+import PressBoard from './PressBoard';
+import PressForm from './PressForm';
 
-const initialPressList = [
-  { id: 1, title: '보도자료 1', content: '보도자료 1 내용', date: '2024-01-30' },
-  { id: 2, title: '보도자료 2', content: '보도자료 2 내용', date: '2024-01-31' },
-  // 필요에 따라 더 많은 샘플 보도자료를 추가하세요
-];
+
+const formatDate = (timestamp) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+  return new Date(timestamp).toLocaleString('en-US', options);
+};
+
+
+
 
 const Press = () => {
   const navigate = useNavigate();
-  const [pressList, setPressList] = useState(initialPressList);
 
-  const handleCreatePress = (newPress) => {
-    setPressList((prevPressList) => [
-      ...prevPressList,
-      { id: prevPressList.length + 1, ...newPress },
-    ]);
+  const handleDeleteEvent = (evnetId) => {
+    // 삭제 로직 구현
+    console.log(`Deleting evnet with ID: ${evnetId}`);
   };
+ 
+  const handleEditEvent = (evnetId) => {
+    // 편집 로직 구현
+    console.log(`Editing evnet with ID: ${evnetId}`);
+  };
+ 
+  const handleCreateEvent = (newEvent) => {
+    // 공지 생성 로직 구현
+    console.log('Creating new evnet:', newEvent);
+    // 서버로 Event를 생성하는 API 호출
+  };
+ 
+  const sampleEvents = [
+    // 샘플 데이터
+  ];
+ 
+   const navigateToCreateEvent = () => {
+     navigate('/Board/presses/create');
+   };
 
   return (
     <>
@@ -30,17 +48,16 @@ const Press = () => {
       <S.Container>
         <S.Title>보도자료</S.Title>
 
-        {/* 버튼을 통한 페이지 이동 */}
-        <Link to="/press">보도자료 목록</Link>
-        <Link to="/press/create">보도자료 작성</Link>
+        <S.Category1>
+          <Link to="/Board/presses/create">보도자료 작성</Link>
+        </S.Category1>
 
-        <Routes>
-          <Route path="/press" element={<PressList pressList={pressList} />} />
-          <Route path="/press/:id" element={<PressDetail pressList={pressList} />} />
-          <Route path="/press/create" element={<PressForm onSubmit={handleCreatePress} />} />
-        </Routes>
+        <S.Category2>
+          <Link to="/Board/presses">보도자료 게시판</Link>
+        </S.Category2>
       </S.Container>
     </>
+
   );
 };
 

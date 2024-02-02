@@ -1,40 +1,140 @@
-// PressForm.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
 import * as S from './Press.styled';
+import axios from 'axios';
+import Main from '../../../MainComponents/Main';
+import MDEditor from '@uiw/react-md-editor';
+import { FileDrop } from 'react-file-drop';
 
-const PressForm = ({ onSubmit }) => {
-  const navigate = useNavigate();
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [date, setDate] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // 보도 자료를 생성할 때 날짜를 포함하려면
-    const currentDate = new Date().toLocaleDateString('en-US');
-    // 날짜 형식을 필요에 따라 조정하고 추가적인 유효성 검사를 수행할 수 있습니다.
-    onSubmit({ title, content, date: currentDate });
-    // 제출 후 목록 페이지로 이동
-    navigate('/press');
+const PressForm = () => {
+  const [markdownContent, setMarkdownContent] = useState('');
+  const [boardColor, setBoardColor] = useState(false);
+  const editorRef = useRef(null);
+
+
+  const handleImageUpload = (files) => {
+    const formData = new FormData();
+    formData.append('file', files[0]);
+    const headers = { 'Content-Type': files[0].type };
+
+    if (files[0].size >= 5000000) {
+      alert('5MB 이상 파일은 업로드가 불가능합니다.');
+    } else if (
+      files[0].type === 'image/png' ||
+      files[0].type === 'image/jpeg' ||
+      files[0].type === 'image/jpg'
+    ) {
+      
+      axios.post('http://eb-umust.umust302.shop/api/images', formData, { headers }).then(function (response) {
+        let imageName = response.data;
+
+        let newValue =
+          markdownContent +
+          '\n\n ![' +
+          files[0].name +
+          '](http://eb-umust.umust302.shop/api/images/' +
+          imageName +
+          ')';
+        setMarkdownContent(newValue);
+      });
+    } else {
+      alert('png, jpg, jpeg 파일이 아닙니다.');
+    }
+
+    setBoardColor(false);
   };
 
+  const handlePaste = (press) => {
+    const items = (press.clipboardData || press.originalEvent.clipboardData).items;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const blob = items[i].getAsFile();
+        handleImageUpload([blob]);
+        press.preventDefault();
+        break;
+      }
+    }
+  };
+
+  const handleEditorChange = (value) => {
+    setMarkdownContent(value);
+  };
+
+  const handleSubmit = (press) => {
+    press.preventDefault();
+  
+    const titleInput = document.querySelector('input[type="text"]');
+    const title = titleInput.value.trim(); 
+  
+    if (!title || !markdownContent.trim()) {
+      alert('제목과 본문을 모두 입력해주세요.');
+      return; 
+    }
+  
+    const articleData = {
+      title: title,
+      content: markdownContent,
+      category: 'PRESS',
+    };
+  
+    axios.post('http://eb-umust.umust302.shop/api/articles', articleData)
+      .then(function (response) {
+        console.log('Article submitted successfully:', response.data);
+      })
+      .catch(function (error) {
+        console.error('Error submitting article:', error);
+      });
+  };
+
+
+
   return (
-    <S.FormContainer>
-      <S.FormTitle>보도자료 작성</S.FormTitle>
-      <form onSubmit={handleSubmit}>
-        <label>
-          제목:
-          <S.FormInput type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </label>
-        <label>
-          내용:
-          <S.FormTextarea value={content} onChange={(e) => setContent(e.target.value)} />
-        </label>
-        {/* 사용자가 날짜를 지정할 수 있도록 하려면 여기에 날짜 입력을 추가할 수 있습니다. */}
-        <S.FormButton type="submit">작성</S.FormButton>
-      </form>
-    </S.FormContainer>
+    <S.PressFormContainer>
+      <Main />
+      <S.FormContainer>
+        <S.FormTitle>보도자료 작성</S.FormTitle>
+
+        <S.PressForm onSubmit={handleSubmit}>
+        <S.Formcategory>제목:</S.Formcategory>
+        <S.FormInput type="text" placeholder="제목을 입력하세요" />
+
+        <S.Formcategory>본문</S.Formcategory>
+        <FileDrop
+              onDragOver={() => {
+                setBoardColor(true);
+              }}
+              onDragLeave={() => {
+                setBoardColor(false);
+              }}
+              onDrop={(files, event) => {
+                handleImageUpload(files);
+              }}
+            >
+              <MDEditor
+                value={markdownContent}
+                onChange={handleEditorChange}
+                preview="edit"
+                height={500}
+                onPaste={handlePaste}
+                style={{
+                  backgroundColor: boardColor ? '#adb5bd' : null,
+                }}
+                ref={editorRef}
+              />
+            </FileDrop>
+
+
+            <S.FormButton type="submit">
+              작성
+            </S.FormButton>
+          </S.PressForm>
+
+          <S.MarkdownPreviewContainer>
+          <h2>Markdown Preview</h2>
+          <S.PressContent>{markdownContent}</S.PressContent>
+        </S.MarkdownPreviewContainer>
+        </S.FormContainer>
+    </S.PressFormContainer>
   );
 };
 

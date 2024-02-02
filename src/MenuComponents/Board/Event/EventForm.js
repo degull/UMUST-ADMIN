@@ -72,7 +72,7 @@ const EventForm = () => {
       const articleData = {
         title: title,
         content: markdownContent,
-        category: 'EVENT',
+        category: 'NOTICE',
       };
     
       axios.post('http://eb-umust.umust302.shop/api/articles', articleData)
