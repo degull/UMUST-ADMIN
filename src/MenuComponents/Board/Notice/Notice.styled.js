@@ -188,3 +188,29 @@ export const FormButton = styled.button`
     background-color: #0056b3;
   }
 `;
+
+export const MarkdownPreviewContainer = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px;
+  border : 1px solid #ddd;
+`;
+
+
+/* export const MarkdownPreviewContainer = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+  } */
