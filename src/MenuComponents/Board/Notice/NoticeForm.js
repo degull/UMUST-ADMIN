@@ -4,15 +4,16 @@ import axios from 'axios';
 import * as S from './Notice.styled';
 import Main from '../../../MainComponents/Main';
 import MDEditor from '@uiw/react-md-editor';
+import { useNavigate } from 'react-router-dom';
 
 const NoticeForm = () => {
+  const navigate = useNavigate();
   const [markdownContent, setMarkdownContent] = useState('');
   const [boardColor, setBoardColor] = useState(false);
   const [fileToUpload, setFileToUpload] = useState(null);
   const [attachedFiles, setAttachedFiles] = useState([]);
   const editorRef = useRef(null);
   const titleRef = useRef(null);
-
   const formData = new FormData();
 
 
@@ -59,7 +60,7 @@ const NoticeForm = () => {
         headers: { 'Content-Type': files[0].type },
       });
 
-      const imageUrl = response.data.fileURL;
+      const imageUrl = response.data.imageUrl;
       setMarkdownContent((prevContent) => prevContent + `\n\n ![Uploaded Image](${imageUrl})`);
       setBoardColor(false);
     } catch (error) {
@@ -134,6 +135,7 @@ const NoticeForm = () => {
       );
 
       console.log(response.data);
+      navigate('/Board/notices');
     } catch (error) {
       console.error('글 작성 오류:', error);
     }

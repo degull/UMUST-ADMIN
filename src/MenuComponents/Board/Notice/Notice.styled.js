@@ -47,9 +47,18 @@ export const NoticeHeader = styled.div`
    background: #f5f4d3;
    padding: 8px;
    border: 1px solid #dddddd;
+   width: 1200px;
 `;
 
+export const NoticeContent = styled.div`
 
+`;
+
+export const Create = styled.div`
+  margin-right: 200px;
+  text-align: center;
+  display: flex;
+`;
 
 export const PostListLabel = styled.div`
    font-size: 16px;
@@ -77,10 +86,22 @@ export const NoticeId = styled.div`
   display: flex;
 `;
 
+export const Date = styled.div`
+  margin-right: 490px;
+  text-align: center;
+  display: flex;
+`;
+
+export const View = styled.div`
+  margin-left: -150px;
+  text-align: center;
+  display: flex;
+`;
+
 export const ItemContent = styled.div`
   flex: 1;
   text-align: center;
-  margin-left: -520px;
+  margin-left: 8px;
   font-size: 12px;
 `;
 
@@ -94,10 +115,6 @@ export const NoticeTitle = styled.div`
   margin-bottom: 5px;
 `;
 
-export const NoticeContent = styled.div`
-  font-size: 16px;
-  color: #555;
-`;
 
 export const NoticeDetails = styled.div`
   display: flex;

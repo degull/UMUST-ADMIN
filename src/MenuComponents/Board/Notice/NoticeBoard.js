@@ -38,22 +38,23 @@ const NoticeBoard = () => {
         {/* <S.PostListLabel>조회수</S.PostListLabel> */}
         {/* <S.PostListLabel>액션</S.PostListLabel> */}
       </S.NoticeHeader>
+
+      <S.NoticeContent>
       {notices.map(notice => (
         <Link key={notice.id} to={`/Board/notices/${notice.id}`}>
           <S.NoticeItem>
             <S.NoticeId>{notice.id}</S.NoticeId>
-            <S.ItemContent>{notice.title}</S.ItemContent>
-            <span>{notice.createdBy}</span>
-            <span>{formatDate(notice.createdAt)}</span>
-            <span>{notice.view}</span>
+            <S.ItemContent>{notice.title.length > 13 ? `${notice.title.substring(0, 13)}...` : notice.title}</S.ItemContent>
+            <S.Create><span>{notice.createdBy}</span></S.Create>
+            <S.Date><span>{formatDate(notice.createdAt)}</span></S.Date>
+            {/* <S.View><span>{notice.view}</span></S.View> */}
             <S.ItemActions>
-              <Link to={`/Board/notices/${notice.id}`}></Link>
-              <button onClick={() => handleEditNotice(notice.id)}>수정</button>
-              <button onClick={() => handleDeleteNotice(notice.id)}>삭제</button>
             </S.ItemActions>
           </S.NoticeItem>
         </Link>
+        
       ))}
+      </S.NoticeContent>
     </S.Container>
   );
 };
