@@ -7,17 +7,17 @@ const NoticeDetail = ({ notice, onDelete, onEdit }) => {
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    // 부모 컴포넌트에서 전달된 onDelete 함수 호출
+    // onDelete 함수를 호출하여 해당 공지사항 삭제
     onDelete(notice.id);
-    // 메인 공지 페이지 또는 다른 적절한 페이지로 이동
-    navigate('/notices');
+    // 메인 페이지로 이동
+    navigate('/Board/notices');
   };
 
   const handleEdit = () => {
-    // 부모 컴포넌트에서 전달된 onEdit 함수 호출
+    // onEdit 함수를 호출하여 해당 공지사항 편집
     onEdit(notice.id);
-    // 편집 페이지 또는 다른 적절한 페이지로 이동
-    navigate(`/notices/${notice.id}/edit`);
+    // 편집 페이지로 이동
+    navigate(`/Board/notices/${notice.id}/edit`);
   };
 
   return (
@@ -25,8 +25,8 @@ const NoticeDetail = ({ notice, onDelete, onEdit }) => {
       <S.NoticeTitle>{notice.title}</S.NoticeTitle>
       <S.NoticeContent>{notice.content}</S.NoticeContent>
       <S.NoticeDetails>
-        <span>작성자: {notice.author}</span>
-        <span>작성 시간: {(notice.timestamp)}</span>
+        <span>작성자: {notice.createdBy}</span>
+        <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString()}</span>
       </S.NoticeDetails>
       <S.Buttons>
         <button onClick={handleDelete}>삭제</button>

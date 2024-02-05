@@ -45,18 +45,17 @@ export const NoticeBoard = styled.div`
 export const NoticeHeader = styled.div`
    display: flex;
    background: #f5f4d3;
-   padding: 10px;
-   margin: 0 auto;
-   max-width: 1000px;
+   padding: 8px;
    border: 1px solid #dddddd;
-   
 `;
+
+
 
 export const PostListLabel = styled.div`
    font-size: 16px;
    font-weight: bold;
    flex: 1;
-   padding: 3px;
+   padding: 2px;
 `;
 
 export const NoticeItem = styled.div`
@@ -64,14 +63,25 @@ export const NoticeItem = styled.div`
   border-bottom: 1px solid #e0e0e0;
   padding: 10px;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px 10px;
 
   &:hover {
     background-color: #f9f9f9;
   }
 `;
 
+export const NoticeId = styled.div`
+  margin-right: 30px;
+  text-align: center;
+  display: flex;
+`;
+
 export const ItemContent = styled.div`
   flex: 1;
+  text-align: center;
+  margin-left: -520px;
+  font-size: 12px;
 `;
 
 export const ItemActions = styled.div`
@@ -188,6 +198,11 @@ export const FormButton = styled.button`
     background-color: #0056b3;
   }
 `;
+
+export const File = styled.div`
+  margin-top: 50px;
+`;
+
 
 export const MarkdownPreviewContainer = styled.div`
   width: 100%;

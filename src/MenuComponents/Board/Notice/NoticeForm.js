@@ -9,10 +9,12 @@ const NoticeForm = () => {
   const [markdownContent, setMarkdownContent] = useState('');
   const [boardColor, setBoardColor] = useState(false);
   const [fileToUpload, setFileToUpload] = useState(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [attachedFiles, setAttachedFiles] = useState([]);
   const editorRef = useRef(null);
+  const titleRef = useRef(null);
 
   const formData = new FormData();
+
 
   const handleFileUpload = async (file) => {
     const allowedFileTypes = ['pdf', 'ppt', 'pptx', 'hwp'];
@@ -57,7 +59,7 @@ const NoticeForm = () => {
         headers: { 'Content-Type': files[0].type },
       });
 
-      const imageUrl = response.data.imageUrl;
+      const imageUrl = response.data.fileURL;
       setMarkdownContent((prevContent) => prevContent + `\n\n ![Uploaded Image](${imageUrl})`);
       setBoardColor(false);
     } catch (error) {
@@ -83,71 +85,59 @@ const NoticeForm = () => {
     setMarkdownContent(value);
   };
 
+  const handleFileSelection = (e) => {
+    e.preventDefault();
+    const selectedFiles = e.target.files;
+    setAttachedFiles([...attachedFiles, ...Array.from(selectedFiles)]);
+    e.target.value = '';
+  };
 
+  const attachedFilesList = attachedFiles.map((file, index) => (
+    <div key={index}>
+      {file.name}
+      <button onClick={() => handleRemoveFile(index)}>삭제</button>
+    </div>
+  ));
+
+  const handleRemoveFile = (index) => {
+    const updatedFiles = [...attachedFiles];
+    updatedFiles.splice(index, 1);
+    setAttachedFiles(updatedFiles);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    const titleInput = document.querySelector('input[type="text"]');
-    const title = titleInput.value.trim();
 
-/*     const data = {
-      "title": name,
-      "content": gender,
-      "category": birthday
-    } */
-  
-    if (!title || !markdownContent.trim()) {
-      alert('제목과 본문을 모두 입력해주세요.');
-      return;
-    }
-
-  
     try {
-      formData.append('title', title);
-      formData.append('content', markdownContent);
-      formData.append('category', 'NOTICE');
-  
-      if (fileToUpload) {
-        formData.append('file', fileToUpload);
-      }
-  
-      const uploader = { name: 'huewilliams' };
-      const uploaderString = JSON.stringify(uploader);
-      const uploaderBlob = new Blob([uploaderString], { type: 'application/json' });
-      formData.append('uploader', uploaderBlob);
-  
-      for (const file of selectedFiles) {
-        formData.append('files', file);
-      }
-  
-      const response = await fetch('http://eb-umust.umust302.shop/api/articles', {
-        method: 'POST',
-        body: formData,
+      const formData = new FormData();
+
+      const data = {
+        title: titleRef.current.value,
+        content: markdownContent,
+        category: "NOTICE",
+      };
+
+      formData.append("article", new Blob([JSON.stringify(data)], { type: "application/json" }));
+
+      attachedFiles.forEach((file) => {
+        formData.append("file", file);
       });
-  
-      const responseData = await response.json();
-  
-      console.log('글 작성 성공:', responseData);
+
+      const response = await axios.post(
+        'https://eb-umust.umust302.shop/api/articles',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      );
+
+      console.log(response.data);
     } catch (error) {
       console.error('글 작성 오류:', error);
     }
   };
-
-  const handleFileSelection = (e) => {
-    e.preventDefault();
-    const selectedFiles = e.target.files;
-    setSelectedFiles(Array.from(selectedFiles));
-    e.target.value = '';
-  };
-
-  const attachedFiles = selectedFiles.map((file) => (
-    <div key={file.name}>
-      {file.name}
-      <button onClick={() => setSelectedFiles(selectedFiles.filter((e) => e !== file))}>
-      </button>
-    </div>
-  ));
 
   return (
     <S.NoticeFormContainer>
@@ -157,8 +147,12 @@ const NoticeForm = () => {
 
         <S.NoticeForm onSubmit={handleSubmit}>
           <S.Formcategory>제목:</S.Formcategory>
-          <S.FormInput type="text" placeholder="제목을 입력하세요" />
-
+          <S.FormInput 
+            type="text"
+            placeholder="제목을 입력하세요"
+            ref={titleRef} 
+          />
+          
           <S.Formcategory>본문</S.Formcategory>
           <FileDrop
             onDragOver={() => setBoardColor(true)}
@@ -181,9 +175,11 @@ const NoticeForm = () => {
               ref={editorRef}
             />
           </FileDrop>
-
+          
+          <S.File>
           <input type="file" multiple onChange={handleFileSelection} />
-          <div>{attachedFiles}</div>
+          <div>{attachedFilesList}</div>
+          </S.File>
 
           <S.FormButton type="submit">작성</S.FormButton>
         </S.NoticeForm>
