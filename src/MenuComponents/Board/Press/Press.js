@@ -18,27 +18,27 @@ const formatDate = (timestamp) => {
 const Press = () => {
   const navigate = useNavigate();
 
-  const handleDeleteEvent = (evnetId) => {
+  const handleDeletePress = (eventId) => {
     // 삭제 로직 구현
-    console.log(`Deleting evnet with ID: ${evnetId}`);
+    console.log(`Deleting evnet with ID: ${eventId}`);
   };
  
-  const handleEditEvent = (evnetId) => {
+  const handleEditPress = (eventId) => {
     // 편집 로직 구현
-    console.log(`Editing evnet with ID: ${evnetId}`);
+    console.log(`Editing evnet with ID: ${eventId}`);
   };
  
-  const handleCreateEvent = (newEvent) => {
+  const handleCreatePress = (newPress) => {
     // 공지 생성 로직 구현
-    console.log('Creating new evnet:', newEvent);
-    // 서버로 Event를 생성하는 API 호출
+    console.log('Creating new evnet:', newPress);
+    // 서버로 Press 생성하는 API 호출
   };
  
-  const sampleEvents = [
+  const samplePresses = [
     // 샘플 데이터
   ];
  
-   const navigateToCreateEvent = () => {
+   const navigateToCreatePress = () => {
      navigate('/Board/presses/create');
    };
 

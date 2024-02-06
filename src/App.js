@@ -21,9 +21,12 @@ import NoticeDetail from './MenuComponents/Board/Notice/NoticeDetail';
 // 행사정보
 import EventBoard from './MenuComponents/Board/Event/EventBoard';
 import EventForm from './MenuComponents/Board/Event/EventForm';
+// 보도자료
 import PressBoard from './MenuComponents/Board/Press/PressBoard';
 import PressForm from './MenuComponents/Board/Press/PressForm';
-
+// 앨범
+import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
+import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
 
 export default function App() {
   return (
@@ -62,8 +65,10 @@ export default function App() {
         <Route path="/Board/presses" element={<PressBoard />} />
         <Route path="/Board/presses/create" element={<PressForm />} />
 
+      {/* -앨범 */}
+      <Route path="/Board/albums" element={<AlbumBoard />} />
+      <Route path="/Board/albums/create" element={<AlbumForm />} />
 
-    
       </Routes>
     </BrowserRouter>
   );
