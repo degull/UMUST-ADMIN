@@ -250,3 +250,5 @@ export const MarkdownPreviewContainer = styled.div`
   padding: 20px;
   border : 1px solid #ddd;
 `;
+
+export const Id = styled.div``;

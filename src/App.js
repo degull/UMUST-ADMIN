@@ -54,6 +54,7 @@ export default function App() {
 
        {/* -공지사항 */}
         <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
+        <Route path="/Board/notices/:게시글번호" element={<NoticeDetail />} />
         <Route path="/Board/notices/create" element={<NoticeForm />} />
         <Route path="/Board/notices/:noticeId" element={<NoticeDetail />} />
 

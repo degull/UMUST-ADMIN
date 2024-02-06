@@ -9,7 +9,7 @@ const formatDate = (timestamp) => {
 };
 
 
-const NoticeBoard = () => {
+const NoticeBoard = (id, title, createdBy,createdAt ) => {
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {

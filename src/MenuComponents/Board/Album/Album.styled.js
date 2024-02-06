@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-/*    width: 1500px;
-   height: 500px;
-   margin-left: 300px; */
    width: 100%;
+   height: 100%;
+   margin-left: 300px;
+/*    width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
 `;
 
 export const Title = styled.div`
@@ -140,8 +140,8 @@ export const AlbumItem = styled.div`
 
 export const Thumbnail = styled.div`
   img {
-    width: 100px;
-    height: auto;
+    width: 200px;
+    height: 150px;
     border-radius: 4px;
 
   }

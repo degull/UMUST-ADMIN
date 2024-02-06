@@ -3,55 +3,41 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './Notice.styled';
 import axios from 'axios';
 import Main from '../../../MainComponents/Main';
+import Notice from './Notice';
 
 const NoticeDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { noticeId } = useParams(); 
   const [notice, setNotice] = useState(null);
-/* 
+
   useEffect(() => {
     const fetchNoticeById = async () => {
       try {
-        const response = await fetch(`https://eb-umust.umust302.shop/api/articles/${id}`);
+        const response = await fetch(`https://umust302.shop/api/articles/${noticeId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         const data = await response.json();
-
-        // Logging the received data
+        
         console.log('Received notice data:', data);
-
+        console.log(noticeId)
         setNotice(data);
       } catch (error) {
         console.error('Error fetching notice:', error);
       }
     };
 
+    // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
     fetchNoticeById();
-  }, [id]); */
-
-  useEffect(() => {
-    const fetchNoticeById = async () => {
-      try {
-        const response = await fetch(`https://eb-umust.umust302.shop/api/articles/${id}`);
-        const data = await response.json();
-  
-        // Logging the received data
-        console.log('Received notice data:', data);
-  
-        setNotice(data);
-      } catch (error) {
-        console.error('Error fetching notice:', error);
-      }
-    };
-  
-    // 컴포넌트가 처음 마운트될 때와 id가 변경될 때마다 데이터를 불러옴
-    fetchNoticeById();
-  }, [id]);
-  
+  }, [noticeId]);
 
   if (!notice) {
     return <div>로딩 중...</div>;
   }
 
-  const handleDelete = () => {
+/*   const handleDelete = () => {
     onDelete(id);
     navigate('/Board/notices');
   };
@@ -59,21 +45,20 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
   const handleEdit = () => {
     onEdit(id);
     navigate(`/Board/notices/${id}/edit`);
-  };
+  }; */
 
   return (
     <S.NoticeDetailContainer>
       <Main />
       <S.DetailContainer>
         <S.NoticeTitle>{notice.title || '제목 없음'}</S.NoticeTitle>
-        <S.NoticeContent>{notice.content}내용내용~~~</S.NoticeContent>
+        <S.NoticeContent>{notice.content}</S.NoticeContent>
         <S.NoticeDetails>
           <span>작성자: {notice.createdBy || '알 수 없음'}</span>
           <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>
         </S.NoticeDetails>
         <S.Buttons>
-          <button onClick={handleDelete}>삭제</button>
-          <button onClick={handleEdit}>수정</button>
+          {/* 삭제 및 수정 버튼 등의 작업을 수행 */}
         </S.Buttons>
       </S.DetailContainer>
     </S.NoticeDetailContainer>
