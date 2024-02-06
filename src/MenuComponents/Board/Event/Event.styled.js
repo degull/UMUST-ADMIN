@@ -36,6 +36,74 @@ export const Category2 = styled.div`
    cursor: pointer;
 `;
 
+export const EventHeader = styled.div`
+   display: flex;
+   background: #f5f4d3;
+   padding: 8px;
+   border: 1px solid #dddddd;
+   width: 1200px;
+`;
+
+export const PostListLabel = styled.div`
+   font-size: 16px;
+   font-weight: bold;
+   flex: 1;
+   padding: 2px;
+`;
+
+export const EventContent = styled.div`
+  font-size: 16px;
+  color: #555;
+  padding: 30px 20px;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+`;
+
+export const ItemContent = styled.div`
+  flex: 1;
+  text-align: center;
+  margin-left: 8px;
+  font-size: 12px;
+`;
+
+export const EventId = styled.div`
+  margin-right: 30px;
+  text-align: center;
+  display: flex;
+`;
+
+export const Create = styled.div`
+  margin-right: 200px;
+  text-align: center;
+  display: flex;
+  font-size: 12px;
+`;
+
+export const Date = styled.div`
+  margin-right: 490px;
+  text-align: center;
+  display: flex;
+  font-size: 12px;
+`;
+
+export const View = styled.div`
+  margin-left: -150px;
+  text-align: center;
+  display: flex;
+`;
+
+
+export const EventItem = styled.div`
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px 10px;
+`;
+
+
 export const EventFormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -106,10 +174,6 @@ export const MarkdownPreviewContainer = styled.div`
   border : 1px solid #ddd;
 `;
 
-export const EventContent = styled.div`
-  font-size: 16px;
-  color: #555;
-`;
 
 export const EventBoard = styled.div`
 

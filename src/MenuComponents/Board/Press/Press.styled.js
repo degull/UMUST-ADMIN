@@ -160,12 +160,15 @@ export const Create = styled.div`
   margin-right: 200px;
   text-align: center;
   display: flex;
+  font-size: 12px;
+
 `;
 
 export const Date = styled.div`
   margin-right: 490px;
   text-align: center;
   display: flex;
+  font-size: 12px;
 `;
 
 export const View = styled.div`
