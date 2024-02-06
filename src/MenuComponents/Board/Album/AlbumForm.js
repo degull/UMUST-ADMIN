@@ -158,18 +158,19 @@ const AlbumForm = () => {
                   ref={titleRef} 
             />
 
-<S.Formcategory>본문</S.Formcategory>
-        <FileDrop
-            onDragOver={() => setBoardColor(true)}
-            onDragLeave={() => setBoardColor(false)}
-            onDrop={(files) => {
-              if (files.length === 1) {
-                handleFileUpload(files[0]);
-              } else {
-                alert('이미지는 한 개씩 업로드해주세요.');
-              }
-            }}
-          >
+            <S.Formcategory>본문</S.Formcategory>
+            <FileDrop
+                  onDragOver={() => setBoardColor(true)}
+                  onDragLeave={() => setBoardColor(false)}
+                  onDrop={(files) => {
+                  if (files.length === 1) {
+                     handleFileUpload(files[0]);
+                  } else {
+                     alert('이미지는 한 개씩 업로드해주세요.');
+                  }
+                  }}
+               >
+
               <MDEditor
                 value={markdownContent}
                 onChange={handleEditorChange}
@@ -184,6 +185,7 @@ const AlbumForm = () => {
             </FileDrop>
 
             <S.File>
+            <S.text>😢썸네일 이미지를 하나만 선택해주세요</S.text>
             <input type="file" multiple onChange={handleFileSelection} />
             <div>{attachedFilesList}</div>
             </S.File>

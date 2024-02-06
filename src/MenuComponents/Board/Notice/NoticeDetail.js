@@ -8,7 +8,7 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [notice, setNotice] = useState(null);
-
+/* 
   useEffect(() => {
     const fetchNoticeById = async () => {
       try {
@@ -25,7 +25,27 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
     };
 
     fetchNoticeById();
+  }, [id]); */
+
+  useEffect(() => {
+    const fetchNoticeById = async () => {
+      try {
+        const response = await fetch(`https://eb-umust.umust302.shop/api/articles/${id}`);
+        const data = await response.json();
+  
+        // Logging the received data
+        console.log('Received notice data:', data);
+  
+        setNotice(data);
+      } catch (error) {
+        console.error('Error fetching notice:', error);
+      }
+    };
+  
+    // 컴포넌트가 처음 마운트될 때와 id가 변경될 때마다 데이터를 불러옴
+    fetchNoticeById();
   }, [id]);
+  
 
   if (!notice) {
     return <div>로딩 중...</div>;

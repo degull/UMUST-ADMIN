@@ -43,7 +43,7 @@ const NoticeBoard = () => {
       {notices.map((notice, index) => (
         <Link key={notice.id} to={`/Board/notices/${notice.id}`}>
           <S.NoticeItem>
-            <S.NoticeId>{index + 1}</S.NoticeId>
+            <S.NoticeId>{notice.id}</S.NoticeId>
             <S.ItemContent>{notice.title.length > 13 ? `${notice.title.substring(0, 13)}...` : notice.title}</S.ItemContent>
             <S.Create><span>{notice.createdBy}</span></S.Create>
             <S.Date><span>{formatDate(notice.createdAt)}</span></S.Date>

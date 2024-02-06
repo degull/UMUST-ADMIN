@@ -51,7 +51,7 @@ export const NoticeHeader = styled.div`
 `;
 
 export const NoticeContent = styled.div`
-  padding: 30px 20px;
+  padding: 20px 8px;
   text-align: center;
 `;
 
@@ -76,7 +76,7 @@ export const NoticeItem = styled.div`
   padding: 10px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px 10px;
+  margin-bottom: 10px 10px 10px 8px;
 
   &:hover {
     background-color: #f9f9f9;
@@ -106,7 +106,7 @@ export const View = styled.div`
 export const ItemContent = styled.div`
   flex: 1;
   text-align: center;
-  margin-left: 8px;
+  margin-left: -40px;
   font-size: 12px;
 `;
 
