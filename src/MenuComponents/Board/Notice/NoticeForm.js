@@ -60,8 +60,8 @@ const NoticeForm = () => {
         headers: { 'Content-Type': files[0].type },
       });
 
-      const imageUrl = response.data.imageUrl;
-      setMarkdownContent((prevContent) => prevContent + `\n\n ![Uploaded Image](${imageUrl})`);
+      const fileURL = response.data.fileURL;
+      setMarkdownContent((prevContent) => prevContent + `\n\n ![Uploaded Image](${fileURL})`);
       setBoardColor(false);
     } catch (error) {
       console.error('이미지 업로드 오류:', error);

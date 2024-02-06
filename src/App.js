@@ -17,6 +17,7 @@ import Album from './MenuComponents/Board/Album/Album';
 // 공지사항
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
+import NoticeDetail from './MenuComponents/Board/Notice/NoticeDetail';
 // 행사정보
 import EventBoard from './MenuComponents/Board/Event/EventBoard';
 import EventForm from './MenuComponents/Board/Event/EventForm';
@@ -51,6 +52,7 @@ export default function App() {
        {/* -공지사항 */}
         <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
         <Route path="/Board/notices/create" element={<NoticeForm />} />
+        <Route path="/Board/notices/:noticeId" element={<NoticeDetail />} />
 
         {/* -행사정보 */}
         <Route path="/Board/events" element={<EventBoard />} />

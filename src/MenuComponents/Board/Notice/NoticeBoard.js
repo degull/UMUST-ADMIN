@@ -13,7 +13,7 @@ const NoticeBoard = () => {
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
-    fetch('https://eb-umust.umust302.shop/api/articles')
+    fetch('https://eb-umust.umust302.shop/api/articles/NOTICE')
       .then(response => response.json())
       .then(data => setNotices(data))
       .catch(error => console.error('Error fetching notices:', error));
@@ -40,16 +40,14 @@ const NoticeBoard = () => {
       </S.NoticeHeader>
 
       <S.NoticeContent>
-      {notices.map(notice => (
+      {notices.map((notice, index) => (
         <Link key={notice.id} to={`/Board/notices/${notice.id}`}>
           <S.NoticeItem>
-            <S.NoticeId>{notice.id}</S.NoticeId>
+            <S.NoticeId>{index + 1}</S.NoticeId>
             <S.ItemContent>{notice.title.length > 13 ? `${notice.title.substring(0, 13)}...` : notice.title}</S.ItemContent>
             <S.Create><span>{notice.createdBy}</span></S.Create>
             <S.Date><span>{formatDate(notice.createdAt)}</span></S.Date>
             {/* <S.View><span>{notice.view}</span></S.View> */}
-            <S.ItemActions>
-            </S.ItemActions>
           </S.NoticeItem>
         </Link>
         

@@ -1,38 +1,62 @@
-// NoticeDetail.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './Notice.styled';
+import axios from 'axios';
+import Main from '../../../MainComponents/Main';
 
-const NoticeDetail = ({ notice, onDelete, onEdit }) => {
+const NoticeDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [notice, setNotice] = useState(null);
+
+  useEffect(() => {
+    const fetchNoticeById = async () => {
+      try {
+        const response = await fetch(`https://eb-umust.umust302.shop/api/articles/${id}`);
+        const data = await response.json();
+
+        // Logging the received data
+        console.log('Received notice data:', data);
+
+        setNotice(data);
+      } catch (error) {
+        console.error('Error fetching notice:', error);
+      }
+    };
+
+    fetchNoticeById();
+  }, [id]);
+
+  if (!notice) {
+    return <div>로딩 중...</div>;
+  }
 
   const handleDelete = () => {
-    // onDelete 함수를 호출하여 해당 공지사항 삭제
-    onDelete(notice.id);
-    // 메인 페이지로 이동
+    onDelete(id);
     navigate('/Board/notices');
   };
 
   const handleEdit = () => {
-    // onEdit 함수를 호출하여 해당 공지사항 편집
-    onEdit(notice.id);
-    // 편집 페이지로 이동
-    navigate(`/Board/notices/${notice.id}/edit`);
+    onEdit(id);
+    navigate(`/Board/notices/${id}/edit`);
   };
 
   return (
-    <div>
-      <S.NoticeTitle>{notice.title}</S.NoticeTitle>
-      <S.NoticeContent>{notice.content}</S.NoticeContent>
-      <S.NoticeDetails>
-        <span>작성자: {notice.createdBy}</span>
-        <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString()}</span>
-      </S.NoticeDetails>
-      <S.Buttons>
-        <button onClick={handleDelete}>삭제</button>
-        <button onClick={handleEdit}>수정</button>
-      </S.Buttons>
-    </div>
+    <S.NoticeDetailContainer>
+      <Main />
+      <S.DetailContainer>
+        <S.NoticeTitle>{notice.title || '제목 없음'}</S.NoticeTitle>
+        <S.NoticeContent>{notice.content}내용내용~~~</S.NoticeContent>
+        <S.NoticeDetails>
+          <span>작성자: {notice.createdBy || '알 수 없음'}</span>
+          <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>
+        </S.NoticeDetails>
+        <S.Buttons>
+          <button onClick={handleDelete}>삭제</button>
+          <button onClick={handleEdit}>수정</button>
+        </S.Buttons>
+      </S.DetailContainer>
+    </S.NoticeDetailContainer>
   );
 };
 

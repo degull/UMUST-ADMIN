@@ -114,3 +114,7 @@ export const EventContent = styled.div`
 export const EventBoard = styled.div`
 
 `;
+
+export const File = styled.div`
+  margin-top: 50px;
+`;

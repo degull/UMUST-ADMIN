@@ -7,10 +7,9 @@ import * as S from './Event.styled';
 import Main from '../../../MainComponents/Main';
 
 const formatDate = (timestamp) => {
-   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-   return new Date(timestamp).toLocaleString('en-US', options);
- };
-
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+  return new Date(timestamp).toLocaleString('en-US', options);
+};
 const Event = () => {
   const navigate = useNavigate();
 
