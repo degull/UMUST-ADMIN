@@ -4,10 +4,6 @@ export const Container = styled.div`
    width: 100%;
    height: 100%;
    margin-left: 300px;
-/*    width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; */
 `;
 
 export const Title = styled.div`
@@ -119,10 +115,6 @@ export const AlbumContent = styled.div`
   padding: 30px 20px;
   text-align: center;
 `;
-
-
-
-
 
 export const AlbumGrid = styled.div`
   display: grid;

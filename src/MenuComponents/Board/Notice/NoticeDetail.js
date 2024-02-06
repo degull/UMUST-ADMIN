@@ -4,6 +4,7 @@ import * as S from './Notice.styled';
 import axios from 'axios';
 import Main from '../../../MainComponents/Main';
 import Notice from './Notice';
+import ReactMarkdown from 'react-markdown';
 
 const NoticeDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
@@ -52,7 +53,19 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
       <Main />
       <S.DetailContainer>
         <S.NoticeTitle>{notice.title || '제목 없음'}</S.NoticeTitle>
-        <S.NoticeContent>{notice.content}</S.NoticeContent>
+
+        {/* Render Markdown content using ReactMarkdown */}
+        <ReactMarkdown>{notice.content}</ReactMarkdown>
+
+        {/* Display NoticeImages component if notice has files */}
+        {notice.files && notice.files.length > 0 && (
+          <S.NoticeImages>
+            {notice.files.map((file) => (
+              <img key={file.fileId} src={file.fileURL} alt={`Attached Image ${file.fileId}`} />
+            ))}
+          </S.NoticeImages>
+        )}
+
         <S.NoticeDetails>
           <span>작성자: {notice.createdBy || '알 수 없음'}</span>
           <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>

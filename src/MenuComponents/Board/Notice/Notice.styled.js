@@ -251,4 +251,14 @@ export const MarkdownPreviewContainer = styled.div`
   border : 1px solid #ddd;
 `;
 
-export const Id = styled.div``;
+
+export const NoticeImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+`;
