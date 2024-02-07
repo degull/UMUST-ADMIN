@@ -27,6 +27,7 @@ import PressForm from './MenuComponents/Board/Press/PressForm';
 // 앨범
 import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
 import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
+import PressDetail from './MenuComponents/Board/Press/PressDetail';
 
 export default function App() {
   return (
@@ -54,7 +55,6 @@ export default function App() {
 
        {/* -공지사항 */}
         <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
-        <Route path="/Board/notices/:게시글번호" element={<NoticeDetail />} />
         <Route path="/Board/notices/create" element={<NoticeForm />} />
         <Route path="/Board/notices/:noticeId" element={<NoticeDetail />} />
 
@@ -65,6 +65,8 @@ export default function App() {
         {/* -보도자료 */}
         <Route path="/Board/presses" element={<PressBoard />} />
         <Route path="/Board/presses/create" element={<PressForm />} />
+        <Route path="/Board/presses/:pressId" element={<PressDetail/>} />
+
 
       {/* -앨범 */}
       <Route path="/Board/albums" element={<AlbumBoard />} />

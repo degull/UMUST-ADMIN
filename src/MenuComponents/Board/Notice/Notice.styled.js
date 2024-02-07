@@ -258,7 +258,9 @@ export const NoticeImages = styled.div`
   gap: 10px;
 
   img {
-    max-width: 100%;
+    width: 200px;
+    display: flex;
+    margin:0 auto;
     height: auto;
   }
 `;

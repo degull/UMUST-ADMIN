@@ -3,44 +3,50 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './Press.styled';
 import axios from 'axios';
 import Main from '../../../MainComponents/Main';
+import ReactMarkdown from 'react-markdown';
 
 const PressDetail = ({ onDelete, onEdit }) => {
 
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { pressId } = useParams();
   const { press, setPress } = useState(null);
 
 
   useEffect(() => {
     const fetchNoticeById = async () => {
       try {
-        const response = await fetch(`https://eb-umust.umust302.shop/api/articles/${id}`);
+        const response = await fetch(`https://umust302.shop/api/articles/${pressId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         const data = await response.json();
-
-        // Logging the received data
-        console.log('Received notice data:', data);
-
+        
+        console.log('Received press data:', data);
+        console.log(pressId)
         setPress(data);
       } catch (error) {
         console.error('Error fetching notice:', error);
       }
     };
 
+    // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
     fetchNoticeById();
-  }, [id]);
+  }, [pressId]);
 
   if (!press) {
     return <div>로딩중,,,,</div>
   }
 
   const handleDelete = () => {
-    onDelete(id);
+    onDelete(pressId);
     navigate('/Board/Presses');
   }
 
   const handleEdit = () => {
-    onEdit(id);
-    navigate(`/Board/presses/${id}/edit`);
+    onEdit(pressId);
+    navigate(`/Board/presses/${pressId}/edit`);
 
   }
   return (

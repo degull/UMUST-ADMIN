@@ -54,10 +54,8 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
       <S.DetailContainer>
         <S.NoticeTitle>{notice.title || '제목 없음'}</S.NoticeTitle>
 
-        {/* Render Markdown content using ReactMarkdown */}
         <ReactMarkdown>{notice.content}</ReactMarkdown>
 
-        {/* Display NoticeImages component if notice has files */}
         {notice.files && notice.files.length > 0 && (
           <S.NoticeImages>
             {notice.files.map((file) => (
