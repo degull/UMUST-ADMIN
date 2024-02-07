@@ -4,8 +4,7 @@ import * as S from './Notice.styled';
 import axios from 'axios';
 import Main from '../../../MainComponents/Main';
 import ReactMarkdown from 'react-markdown';
-import ConfirmationPopup from './ConfirmationPopup';
-import PropTypes from 'prop-types';
+
 
 const NoticeDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
 
 
   useEffect(() => {
-    const fetchPressById = async () => {
+    const fetchNoticeById = async () => {
       try {
         const response = await fetch(`https://umust302.shop/api/articles/${noticeId}`, {
           method: 'PATCH',
@@ -34,8 +33,12 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
     };
 
     // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
-    fetchPressById();
+    fetchNoticeById();
   }, [noticeId]);
+
+  if (!notice) {
+    return <div>로딩 중...</div>;
+  }
 
   const handleDelete = () => {
     setShowConfirmation(true);
@@ -69,9 +72,7 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
     navigate(`/Board/notices/${noticeId}/edit`);
   };
 
-  if (!notice) {
-    return <div>로딩 중...</div>;
-  }
+
 
   return (
     <S.NoticeDetailContainer>
@@ -89,7 +90,7 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
         )}
 
         <S.NoticeDetails>
-          <span>작성자: {notice.createdBy || '알 수 없음'}</span>
+          <span>작성자: {notice.createdBy || '관리자'}</span>
           <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>
         </S.NoticeDetails>
         <S.Buttons>

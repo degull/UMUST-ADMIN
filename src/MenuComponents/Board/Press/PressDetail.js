@@ -10,7 +10,7 @@ const PressDetail = ({ onDelete, onEdit }) => {
   const navigate = useNavigate();
   const { pressId } = useParams();
   const [press, setPress] = useState(null);
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchPressById = async () => {
@@ -39,10 +39,33 @@ const PressDetail = ({ onDelete, onEdit }) => {
     return <div>로딩중,,,,</div>
   }
 
+
   const handleDelete = () => {
-    onDelete(pressId);
-    navigate('/Board/Presses');
-  }
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const deleteResponse = await axios.delete(`https://umust302.shop/api/articles/${pressId}`);
+      if (deleteResponse.status === 200) {
+        console.log('press deleted successfully.');
+        onDelete(pressId);
+
+        navigate('/Board/presses');
+      } else {
+        console.error('Failed to delete notice.');
+      }
+    } catch (error) {
+      console.error('Error deleting notice:', error);
+    }
+
+    setShowConfirmation(false);
+  };
+
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  };
 
   const handleEdit = () => {
     onEdit(pressId);
@@ -77,7 +100,20 @@ const PressDetail = ({ onDelete, onEdit }) => {
         <button onClick={handleEdit}>수정</button>
       </S.Buttons>
 
+
+      {showConfirmation && (
+          <S.ConfirmationPopup>
+            <S.ConfirmationPopupContent>
+              <p>정말로 삭제하시겠습니까?</p>
+              <S.ConfirmationButtons>
+                <button onClick={handleConfirmDelete}>예</button>
+                <button onClick={handleCancelDelete}>아니요</button>
+              </S.ConfirmationButtons>
+            </S.ConfirmationPopupContent>
+          </S.ConfirmationPopup>
+        )}
       </S.DetailContainer>
+
     </S.PressDetailContainer>
   );
 };
