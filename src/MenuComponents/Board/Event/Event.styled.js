@@ -149,7 +149,6 @@ export const FormInput = styled.input`
   padding: 8px;
   margin-bottom: 20px;
   border-radius:4px;
-
 `;
 
 export const FormButton = styled.button`

@@ -67,7 +67,7 @@ export default function App() {
         {/* -논문 */}
         <Route path="/Research/papers" element={<PaperBoard />} /> 
         <Route path="/Research/papers/create" element={<PaperForm />} />
-        <Route path="/Research/papers/:paperId" element={<NoticeDetail />} />
+        <Route path="/Research/papers/:paperId" element={<PaperDetail />} />
 
 
         {/* 제품 */}
