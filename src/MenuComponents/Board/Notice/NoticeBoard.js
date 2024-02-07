@@ -1,5 +1,3 @@
-// NoticeBoard.js
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './Notice.styled';
@@ -15,7 +13,7 @@ const NoticeBoard = () => {
   const [notices, setNotices] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const pageSize = 10;
-  
+
   useEffect(() => {
     const pageSize = 10;
     const apiUrl = `https://eb-umust.umust302.shop/api/articles/NOTICE?page=${currentPage}&size=${pageSize}`;

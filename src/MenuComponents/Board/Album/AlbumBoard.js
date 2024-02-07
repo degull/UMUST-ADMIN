@@ -10,13 +10,17 @@ const formatDate = (timestamp) => {
 
 const AlbumBoard = () => {
   const [albums, setAlbums] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    fetch("https://eb-umust.umust302.shop/api/articles/ALBUM")
+    const pageSize = 12;
+    const apiUrl = `https://eb-umust.umust302.shop/api/articles/ALBUM?page=${currentPage}&size=${pageSize}`;
+
+    fetch(apiUrl)
       .then(response => response.json())
-      .then(data => setAlbums(data))
-      .catch(error => console.error("앨범 데이터 로딩 에러", error));
-  }, []);
+      .then(data => setAlbums(data.content))
+      .catch(error => console.error('앨범 데이터 로딩 에러', error));
+  }, [currentPage]);
 
   const handleEditAlbum = (albumId) => {
     console.log(`Editing Album with ID: ${albumId}`);
@@ -30,7 +34,7 @@ const AlbumBoard = () => {
     <S.Container>
       <Main />
       <S.AlbumGrid>
-        {albums.map(album => (
+        {Array.isArray(albums) && albums.map(album => (
           <Link key={album.id} to={`/Board/albums/${album.id}`}>
             <S.AlbumItem>
               <S.Thumbnail>
@@ -41,11 +45,17 @@ const AlbumBoard = () => {
               </S.Thumbnail>
               <S.AlbumTitle>{album.title}</S.AlbumTitle>
               <S.CreateDate>{formatDate(album.createdAt)}</S.CreateDate>
-              {/* 나머지 버튼 등을 추가하세요. */}
             </S.AlbumItem>
           </Link>
         ))}
       </S.AlbumGrid>
+      <div>
+        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>
+          이전 페이지
+        </button>
+        <span>페이지 {currentPage + 1}</span>
+        <button onClick={() => setCurrentPage(currentPage + 1)}>다음 페이지</button>
+      </div>
     </S.Container>
   );
 };
