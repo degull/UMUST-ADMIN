@@ -12,7 +12,6 @@ const PaperBoard = () => {
         const response = await axios.get('https://eb-umust.umust302.shop/api/thesis');
         const paperList = response.data;
 
-        // Update state with the fetched paper details
         setPaperDetails(paperList);
       } catch (error) {
         console.error('Error fetching paper details:', error);
@@ -29,19 +28,18 @@ const PaperBoard = () => {
       <S.BoardTitle2>유머스트알엔디의 연구 성과입니다.</S.BoardTitle2>
       <S.Border />
 
-      {/* Display each paper in the paperDetails state */}
       {paperDetails.map((paper, index) => (
         <S.PaperHeader key={index}>
           <S.PaperTitle>{paper.title}</S.PaperTitle>
           <S.PaperDetail>
-            <S.subPaper>Journal:</S.subPaper>{paper.journal}<br/>
+            <S.subPaper>Journal:<br/><S.subApi>{paper.journal}</S.subApi></S.subPaper>
           </S.PaperDetail>
           <S.PaperDetail>
-            <S.subPaper>Authors:</S.subPaper>{paper.authors}
+            <S.subPaper>Authors:<br/><S.subApi>{paper.authors}</S.subApi></S.subPaper>
           </S.PaperDetail>
-          <S.PaperDetail>{paper.date}</S.PaperDetail>
+          <S.PaperDetail><S.subPaper>{paper.date}</S.subPaper></S.PaperDetail>
           <S.PaperDetail>
-            링크: <a href={paper.link}>{paper.link}</a>
+          <S.subPaper><a href={paper.link}>{paper.link}</a></S.subPaper>
           </S.PaperDetail>
         </S.PaperHeader>
       ))}

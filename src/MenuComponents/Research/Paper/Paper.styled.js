@@ -119,6 +119,7 @@ export const Border = styled.div`
 
 export const PaperHeader = styled.div`
    display: flex;
+   flex-direction: column; 
    margin-top: 20px;
    padding: 8px;
    border: 1px solid #dddddd;
@@ -141,13 +142,29 @@ export const PaperTitle = styled.h1`
   font-size: 16px;
   font-weight: 700;
   width: 650px;
+  height: auto;
+  margin-bottom: 5px;
   `;
 
 export const subPaper = styled.div`
-font-size: 9px;
-font-weight: bold;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: right; 
 `;
 
 export const PaperDetail = styled.p`
-  // your styles for PaperDetail
+  width: 450px;
+  height: auto;
+  margin-top: 2px; 
+  margin-left: 720px;
+  text-align: left;
+`;
+export const TitleContainer = styled.div`
+
+`;
+
+export const subApi = styled.div`
+   font-size: 9px;
+   color: #636262;
+   margin-bottom: 8px;
 `;
