@@ -18,7 +18,7 @@ export default function Paper(){
 
 
                <S.Category2>
-                  <Link to="/Research/papers">글쓰기</Link>
+                  <Link to="/Research/papers">논문 게시판</Link>
                </S.Category2>
 
 

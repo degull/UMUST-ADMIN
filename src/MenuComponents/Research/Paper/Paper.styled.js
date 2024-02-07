@@ -104,3 +104,50 @@ export const FormInput = styled.input`
    color: #999;
   }
 `;
+
+export const PostListLabel = styled.div`
+   font-size: 16px;
+   font-weight: bold;
+   flex: 1;
+   padding: 2px;
+`;
+
+export const Border = styled.div`
+   border: 3px solid #033788;
+   width: 1200px;
+`;
+
+export const PaperHeader = styled.div`
+   display: flex;
+   margin-top: 20px;
+   padding: 8px;
+   border: 1px solid #dddddd;
+   width: 1200px;
+`;
+
+
+export const BoardTitle1 = styled.div`
+   font-size:22px;
+   font-weight: 900;
+   margin-bottom: 17px;
+`;
+
+export const BoardTitle2 = styled.div`
+   font-size: 11px;
+   margin-bottom: 11px;
+`;
+
+export const PaperTitle = styled.h1`
+  font-size: 16px;
+  font-weight: 700;
+  width: 650px;
+  `;
+
+export const subPaper = styled.div`
+font-size: 9px;
+font-weight: bold;
+`;
+
+export const PaperDetail = styled.p`
+  // your styles for PaperDetail
+`;

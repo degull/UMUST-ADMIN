@@ -31,6 +31,7 @@ import PaperDetail from './MenuComponents/Research/Paper/PaperDetail';
 import PaperForm from './MenuComponents/Research/Paper/PaperForm';
 
 
+
 // 공지사항
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
@@ -68,7 +69,7 @@ export default function App() {
         <Route path="/Research/papers" element={<PaperBoard />} /> 
         <Route path="/Research/papers/create" element={<PaperForm />} />
         <Route path="/Research/papers/:paperId" element={<PaperDetail />} />
-
+        <Route path="/paper-board/:title" element={<PaperBoard />} />
 
         {/* 제품 */}
         <Route path="/product/info" element={<Info />} />
