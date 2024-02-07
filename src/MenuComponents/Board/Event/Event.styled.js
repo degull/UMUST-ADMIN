@@ -222,3 +222,12 @@ export const Buttons = styled.div`
   display: flex;
   gap: 10px;
 `;
+
+export const DetailContainer = styled.div`
+width: 800px;
+margin: 30px auto;
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;

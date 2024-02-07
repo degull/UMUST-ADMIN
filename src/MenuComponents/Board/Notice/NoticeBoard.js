@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const formatDate = (timestamp) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(timestamp).toLocaleString('en-US', options);
+  return new Date(timestamp).toLocaleString('ko-KR', options);
 };
 
 const NoticeBoard = () => {

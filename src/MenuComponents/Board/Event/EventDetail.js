@@ -55,6 +55,7 @@ const EventDetail = ({ onDelete, onEdit }) => {
    return (
       <S.EventDetailContainer>
          <Main />
+         <S.DetailContainer>
          <S.EventTitle>{event.title || '제목없음'}</S.EventTitle>
 
          <ReactMarkdown>{event.content}</ReactMarkdown>
@@ -76,6 +77,8 @@ const EventDetail = ({ onDelete, onEdit }) => {
         <button onClick={handleDelete}>삭제</button>
         <button onClick={handleEdit}>수정</button>
       </S.Buttons>
+
+      </S.DetailContainer>
       </S.EventDetailContainer>
    );
 };

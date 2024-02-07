@@ -8,9 +8,10 @@ import * as S from './Notice.styled';
 import Main from '../../../MainComponents/Main';
 
 const formatDate = (timestamp) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-  return new Date(timestamp).toLocaleString('ko', options);
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short', timeZone: 'Asia/Seoul' };
+  return new Date(timestamp).toLocaleString('ko-KR', options);
 };
+
 
 const Notice = () => {
   const navigate = useNavigate();

@@ -49,7 +49,8 @@ export const PressFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
+  width: 1200px;
+  margin-left: 300px;
 `;
 
 
@@ -61,6 +62,7 @@ padding: 20px;
 border-radius: 8px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
+
 
 
 export const Buttons = styled.div`
@@ -198,6 +200,8 @@ export const PressContent = styled.div`
   color: #555;
   padding: 30px 20px;
   text-align: center;
+/*   width: 1100px;
+  margin: 0 auto; */
 `;
 
 
@@ -235,3 +239,4 @@ export const PressImages = styled.div`
     height: auto;
   }
 `;
+

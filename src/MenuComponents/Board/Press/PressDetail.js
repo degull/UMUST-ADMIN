@@ -52,10 +52,13 @@ const PressDetail = ({ onDelete, onEdit }) => {
   return (
     <S.PressDetailContainer>
       <Main />
+      <S.DetailContainer>
       <S.PressTitle>{press.title || '제목없음'}</S.PressTitle>
 
+      <S.PressContent>
       <ReactMarkdown>{press.content}</ReactMarkdown>
 
+      </S.PressContent>
       {press.files && press.files.length > 0 && (
           <S.PressImages>
             {press.files.map((file) => (
@@ -73,6 +76,8 @@ const PressDetail = ({ onDelete, onEdit }) => {
         <button onClick={handleDelete}>삭제</button>
         <button onClick={handleEdit}>수정</button>
       </S.Buttons>
+
+      </S.DetailContainer>
     </S.PressDetailContainer>
   );
 };

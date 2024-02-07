@@ -116,9 +116,5 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
   );
 };
 
-NoticeDetail.propTypes = {
-  onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
-};
 
 export default NoticeDetail;

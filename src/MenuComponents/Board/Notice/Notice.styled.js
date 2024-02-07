@@ -261,12 +261,12 @@ export const NoticeImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
 
   img {
     width: 200px;
     display: flex;
     margin:0 auto;
-    height: auto;
   }
 `;
 
