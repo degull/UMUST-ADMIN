@@ -9,7 +9,7 @@ import Main from '../../../MainComponents/Main';
 
 const formatDate = (timestamp) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-  return new Date(timestamp).toLocaleString('en-US', options);
+  return new Date(timestamp).toLocaleString('ko', options);
 };
 
 const Notice = () => {

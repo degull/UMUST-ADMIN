@@ -59,7 +59,7 @@ export default function App() {
         <Route path="/Board/album" element={<Album />} />
 
        {/* -공지사항 */}
-        <Route path="/Board/notices" element={<NoticeBoard />} /> {/* "/Board/notices"로 라우팅 추가 */}
+        <Route path="/Board/notices" element={<NoticeBoard />} /> 
         <Route path="/Board/notices/create" element={<NoticeForm />} />
         <Route path="/Board/notices/:noticeId" element={<NoticeDetail />} />
 
@@ -74,10 +74,10 @@ export default function App() {
         <Route path="/Board/presses/:pressId" element={<PressDetail />} />
 
 
-      {/* -앨범 */}
-      <Route path="/Board/albums" element={<AlbumBoard />} />
-      <Route path="/Board/albums/create" element={<AlbumForm />} />
-      <Route path="/Board/albums/:albumId" element={<AlbumDetail/>}/>
+        {/* -앨범 */}
+        <Route path="/Board/albums" element={<AlbumBoard />} />
+        <Route path="/Board/albums/create" element={<AlbumForm />} />
+        <Route path="/Board/albums/:albumId" element={<AlbumDetail/>}/>
 
       </Routes>
     </BrowserRouter>

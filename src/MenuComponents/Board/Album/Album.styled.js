@@ -182,3 +182,54 @@ export const text = styled.div`
   padding: 0 0 15px -5px;
   padding-bottom: 10px;
 `;
+
+export const AlbumDetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  `;
+
+
+export const DetailContainer = styled.div`
+width: 800px;
+margin: 30px auto;
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const AlbumTitle1 = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+`;
+
+export const AlbumImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    width: 200px;
+    display: flex;
+    margin:0 auto;
+    height: auto;
+  }
+`;
+
+export const AlbumDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #777;
+  font-size: 14px;
+`;
+
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 10px;
+`;

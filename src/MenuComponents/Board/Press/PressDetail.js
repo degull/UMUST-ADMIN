@@ -65,7 +65,7 @@ const PressDetail = ({ onDelete, onEdit }) => {
         )}
 
       <S.PressDetails>
-        <span>작성자 : {press.createBy || '알수없음'}</span>
+        <span>작성자 : {press.createBy || '관리자'}</span>
         <span>작성시간 : {(new Date(press.createBy)).toLocaleString() || '알수없음'}</span>
       </S.PressDetails>
 
