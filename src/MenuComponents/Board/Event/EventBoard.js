@@ -5,8 +5,9 @@ import * as S from './Event.styled';
 
 const formatDate = (timestamp) => {
    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-   return new Date(timestamp).toLocaleString('en-US', options);
+   return new Date(timestamp).toLocaleString('ko-KR', options);
  };
+ 
 
 
 const EventBoard = () => {
@@ -41,6 +42,7 @@ const EventBoard = () => {
          <S.EventContent>
             {events.map((event, index) => (
                <Link key={event.id} to={`/Board/events/${event.id}`}>
+                  
                   <S.EventItem>
                      <S.EventId>{index + 1}</S.EventId>
                      <S.ItemContent>{event.title.length > 13 ? `${event.title.substring(0, 13)}...` : event.title}</S.ItemContent>

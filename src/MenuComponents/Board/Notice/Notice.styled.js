@@ -51,7 +51,11 @@ export const NoticeHeader = styled.div`
 `;
 
 export const NoticeContent = styled.div`
-  padding: 20px 8px;
+  font-size: 16px;
+  color: #555;
+  padding: 30px 20px;
+  font-size: 16px;
+  color: #555;
   text-align: center;
 `;
 
@@ -59,7 +63,7 @@ export const Create = styled.div`
   margin-right: 200px;
   text-align: center;
   display: flex;
-  display: flex;font-size: 12px;
+  font-size: 12px;
 
 `;
 
@@ -76,7 +80,7 @@ export const NoticeItem = styled.div`
   padding: 10px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px 10px 10px 8px;
+  margin-bottom: 10px 10px;
 
   &:hover {
     background-color: #f9f9f9;
@@ -93,7 +97,6 @@ export const Date = styled.div`
   margin-right: 490px;
   text-align: center;
   display: flex;
-  font-size: 12px;
 
 `;
 
@@ -106,7 +109,7 @@ export const View = styled.div`
 export const ItemContent = styled.div`
   flex: 1;
   text-align: center;
-  margin-left: -40px;
+  margin-left: 8px;
   font-size: 12px;
 `;
 
@@ -261,12 +264,12 @@ export const NoticeImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  width: 100%;
 
   img {
     width: 200px;
     display: flex;
     margin:0 auto;
+    height: auto;
   }
 `;
 
@@ -298,4 +301,13 @@ export const ConfirmationButtons = styled.div`
     border: none;
     border-radius: 4px;
   }
+`;
+
+export const EventItem = styled.div`
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px 10px;
 `;

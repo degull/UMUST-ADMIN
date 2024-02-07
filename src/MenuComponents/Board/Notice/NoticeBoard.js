@@ -52,18 +52,16 @@ const NoticeBoard = () => {
 
       <S.NoticeContent>
         {notices.map((notice, index) => (
-          <S.NoticeItem key={notice.id}>
-            <S.NoticeId>{notice.id}</S.NoticeId>
-            <Link to={`/Board/notices/${notice.id}`}>
+          <Link key={notice.id} to={`/Board/notices/${notice.id}`}>
+
+            <S.EventItem>
+              <S.NoticeId>{index + 1 }</S.NoticeId>
               <S.ItemContent>{notice.title.length > 13 ? `${notice.title.substring(0, 13)}...` : notice.title}</S.ItemContent>
-            </Link>
-            <S.Create><span>{notice.createdBy}</span></S.Create>
-            <S.Date><span>{formatDate(notice.createdAt)}</span></S.Date>
-            <S.ItemActions>
-              <button onClick={() => handleEditNotice(notice.id)}>수정</button>
-              <button onClick={() => handleDeleteNotice(notice.id)}>삭제</button>
-            </S.ItemActions>
-          </S.NoticeItem>
+              <S.Create><span>{notice.createdBy}</span></S.Create>
+              <S.Date><span>{formatDate(notice.createdAt)}</span></S.Date>
+            </S.EventItem>
+
+          </Link>
         ))}
       </S.NoticeContent>
     </S.Container>
