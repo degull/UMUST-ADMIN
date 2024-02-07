@@ -1,19 +1,36 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Main from './MainComponents/Main';
-import Paper from './MenuComponents/Research/Paper/Paper';
-import Patent from './MenuComponents/Research/Patent/Patent';
-import Certification from './MenuComponents/Research/Certification/Certification';
-import Blog from './MenuComponents/Research/Blog/Blog';
+
+/* ---------------------------------------------------------------------- */
 
 import Info from './MenuComponents/Product/Info';
-
+/* ---------------------------------------------------------------------- */
 import Data from './MenuComponents/CRO/Data';
+
+/* ---------------------------------------------------------------------- */
+
+import Blog from './MenuComponents/Research/Blog/Blog';
+import Certification from './MenuComponents/Research/Certification/Certification';
+import Paper from './MenuComponents/Research/Paper/Paper';
+import Patent from './MenuComponents/Research/Patent/Patent';
+
+/* ----------------------------------------------------------------------- */
+
 
 import Notice from './MenuComponents/Board/Notice/Notice';
 import Press from './MenuComponents/Board/Press/Press';
 import Event from './MenuComponents/Board/Event/Event';
 import Album from './MenuComponents/Board/Album/Album';
+/* ---------------------------------------------------------------------- */
+
+
+// 논문
+import PaperBoard from './MenuComponents/Research/Paper/PaperBoard';
+import PaperDetail from './MenuComponents/Research/Paper/PaperDetail';
+import PaperForm from './MenuComponents/Research/Paper/PaperForm';
+
+
 // 공지사항
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
@@ -41,10 +58,17 @@ export default function App() {
         <Route path="/" element={<Main />} />
 
         {/* 연구개발 */}
-        <Route path="/research/paper" element={<Paper />} />
-        <Route path="/research/patent" element={<Patent />} />
-        <Route path="/research/certification" element={<Certification />} />
-        <Route path="/research/blog" element={<Blog />} />
+        <Route path="/Research/paper" element={<Paper />} />
+        <Route path="/Research/patent" element={<Patent />} />
+        <Route path="/Research/certification" element={<Certification />} />
+        <Route path="/Research/blog" element={<Blog />} />
+
+
+        {/* -논문 */}
+        <Route path="/Research/papers" element={<PaperBoard />} /> 
+        <Route path="/Research/papers/create" element={<PaperForm />} />
+        <Route path="/Research/papers/:paperId" element={<NoticeDetail />} />
+
 
         {/* 제품 */}
         <Route path="/product/info" element={<Info />} />

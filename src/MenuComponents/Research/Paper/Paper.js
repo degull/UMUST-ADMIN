@@ -10,26 +10,17 @@ export default function Paper(){
          <Main />
          <S.Container>
             <S.Title>논문</S.Title>
-{/*  */}
-            <S.WriteContainer>
+
 
                <S.Category1>
-                  글쓰기
+                  <Link to="/Research/papers/create">글쓰기</Link>
                </S.Category1>
 
-            </S.WriteContainer>
 
-
-            <S.ListContainer>
                <S.Category2>
-                  게시판
+                  <Link to="/Research/papers">글쓰기</Link>
                </S.Category2>
-            </S.ListContainer>
 
-
-            <S.Write>
-
-            </S.Write>
 
 
          </S.Container>
