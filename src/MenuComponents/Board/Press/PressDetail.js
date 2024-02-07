@@ -9,11 +9,11 @@ const PressDetail = ({ onDelete, onEdit }) => {
 
   const navigate = useNavigate();
   const { pressId } = useParams();
-  const { press, setPress } = useState(null);
+  const [press, setPress] = useState(null);
 
 
   useEffect(() => {
-    const fetchNoticeById = async () => {
+    const fetchPressById = async () => {
       try {
         const response = await fetch(`https://umust302.shop/api/articles/${pressId}`, {
           method: 'PATCH',
@@ -32,7 +32,7 @@ const PressDetail = ({ onDelete, onEdit }) => {
     };
 
     // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
-    fetchNoticeById();
+    fetchPressById();
   }, [pressId]);
 
   if (!press) {
@@ -47,13 +47,23 @@ const PressDetail = ({ onDelete, onEdit }) => {
   const handleEdit = () => {
     onEdit(pressId);
     navigate(`/Board/presses/${pressId}/edit`);
-
   }
+  
   return (
     <S.PressDetailContainer>
       <Main />
       <S.PressTitle>{press.title || '제목없음'}</S.PressTitle>
-      <S.PressContent>{press.content}내용내용</S.PressContent>
+
+      <ReactMarkdown>{press.content}</ReactMarkdown>
+
+      {press.files && press.files.length > 0 && (
+          <S.PressImages>
+            {press.files.map((file) => (
+              <img key={file.fileId} src={file.fileURL} alt={`Attached Image ${file.fileId}`} />
+            ))}
+          </S.PressImages>
+        )}
+
       <S.PressDetails>
         <span>작성자 : {press.createBy || '알수없음'}</span>
         <span>작성시간 : {(new Date(press.createBy)).toLocaleString() || '알수없음'}</span>

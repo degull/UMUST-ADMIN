@@ -18,14 +18,14 @@ const formatDate = (timestamp) => {
 const Press = () => {
   const navigate = useNavigate();
 
-  const handleDeletePress = (eventId) => {
+  const handleDeletePress = (pressId) => {
     // 삭제 로직 구현
-    console.log(`Deleting evnet with ID: ${eventId}`);
+    console.log(`Deleting evnet with ID: ${pressId}`);
   };
  
-  const handleEditPress = (eventId) => {
+  const handleEditPress = (pressId) => {
     // 편집 로직 구현
-    console.log(`Editing evnet with ID: ${eventId}`);
+    console.log(`Editing evnet with ID: ${pressId}`);
   };
  
   const handleCreatePress = (newPress) => {

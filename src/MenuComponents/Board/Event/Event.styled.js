@@ -182,3 +182,43 @@ export const EventBoard = styled.div`
 export const File = styled.div`
   margin-top: 50px;
 `;
+
+export const EventDetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+`;
+
+export const EventTitle = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+`;
+
+export const EventImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    width: 200px;
+    display: flex;
+    margin:0 auto;
+    height: auto;
+  }
+`;
+
+export const EventDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #777;
+  font-size: 14px;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 10px;
+`;

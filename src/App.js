@@ -21,13 +21,18 @@ import NoticeDetail from './MenuComponents/Board/Notice/NoticeDetail';
 // 행사정보
 import EventBoard from './MenuComponents/Board/Event/EventBoard';
 import EventForm from './MenuComponents/Board/Event/EventForm';
+import EventDetail from './MenuComponents/Board/Event/EventDetail';
+
+
 // 보도자료
 import PressBoard from './MenuComponents/Board/Press/PressBoard';
 import PressForm from './MenuComponents/Board/Press/PressForm';
+import PressDetail from './MenuComponents/Board/Press/PressDetail';
 // 앨범
 import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
 import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
-import PressDetail from './MenuComponents/Board/Press/PressDetail';
+import AlbumDetail from './MenuComponents/Board/Album/AlbumDetail';
+
 
 export default function App() {
   return (
@@ -61,16 +66,18 @@ export default function App() {
         {/* -행사정보 */}
         <Route path="/Board/events" element={<EventBoard />} />
         <Route path="/Board/events/create" element={<EventForm />} />
+        <Route path="/Board/events/:eventId" element={<EventDetail/>}/>
 
         {/* -보도자료 */}
         <Route path="/Board/presses" element={<PressBoard />} />
         <Route path="/Board/presses/create" element={<PressForm />} />
-        <Route path="/Board/presses/:pressId" element={<PressDetail/>} />
+        <Route path="/Board/presses/:pressId" element={<PressDetail />} />
 
 
       {/* -앨범 */}
       <Route path="/Board/albums" element={<AlbumBoard />} />
       <Route path="/Board/albums/create" element={<AlbumForm />} />
+      <Route path="/Board/albums/:albumId" element={<AlbumDetail/>}/>
 
       </Routes>
     </BrowserRouter>

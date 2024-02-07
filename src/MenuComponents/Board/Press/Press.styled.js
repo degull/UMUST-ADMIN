@@ -222,3 +222,16 @@ export const MarkdownPreviewContainer = styled.div`
   padding: 20px;
   border : 1px solid #ddd;
 `;
+
+export const PressImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    width: 200px;
+    display: flex;
+    margin:0 auto;
+    height: auto;
+  }
+`;
