@@ -11,6 +11,7 @@ const EventDetail = ({ onDelete, onEdit }) => {
    const navigate = useNavigate();
    const { eventId } = useParams();
    const [ event, setEvent ] = useState(null);
+   const [showConfirmation, setShowConfirmation] = useState(false);
 
 
 
@@ -43,9 +44,32 @@ const EventDetail = ({ onDelete, onEdit }) => {
   
 
     const handleDelete = () => {
-      onDelete(eventId);
-      navigate('/Board/events');
-    }
+      setShowConfirmation(true);
+    };
+  
+    const handleConfirmDelete = async () => {
+      try {
+        const deleteResponse = await axios.delete(`https://umust302.shop/api/articles/${eventId}`);
+        if (deleteResponse.status === 200) {
+          console.log('press deleted successfully.');
+          onDelete(eventId);
+  
+          navigate('/Board/events');
+        } else {
+          console.error('Failed to delete event.');
+        }
+      } catch (error) {
+        console.error('Error deleting event:', error);
+      }
+  
+      setShowConfirmation(false);
+    };
+  
+  
+    const handleCancelDelete = () => {
+      setShowConfirmation(false);
+    };
+  
   
     const handleEdit = () => {
       onEdit(eventId);
@@ -69,7 +93,7 @@ const EventDetail = ({ onDelete, onEdit }) => {
         )}
 
       <S.EventDetails>
-        <span>작성자 : {event.createBy || '알수없음'}</span>
+        <span>작성자 : {event.createBy || '관리자'}</span>
         <span>작성시간 : {(new Date(event.createBy)).toLocaleString() || '알수없음'}</span>
       </S.EventDetails>
 
@@ -77,6 +101,18 @@ const EventDetail = ({ onDelete, onEdit }) => {
         <button onClick={handleDelete}>삭제</button>
         <button onClick={handleEdit}>수정</button>
       </S.Buttons>
+
+      {showConfirmation && (
+          <S.ConfirmationPopup>
+            <S.ConfirmationPopupContent>
+              <p>정말로 삭제하시겠습니까?</p>
+              <S.ConfirmationButtons>
+                <button onClick={handleConfirmDelete}>예</button>
+                <button onClick={handleCancelDelete}>아니요</button>
+              </S.ConfirmationButtons>
+            </S.ConfirmationPopupContent>
+          </S.ConfirmationPopup>
+        )}
 
       </S.DetailContainer>
       </S.EventDetailContainer>

@@ -231,3 +231,33 @@ padding: 20px;
 border-radius: 8px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
+
+export const ConfirmationPopup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+`;
+
+export const ConfirmationPopupContent = styled.div`
+  text-align: center;
+  p {
+    margin-bottom: 20px;
+  }
+`;
+
+export const ConfirmationButtons = styled.div`
+  button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+`;
