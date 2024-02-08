@@ -20,6 +20,7 @@ const NoticeBoard = () => {
   const pageSize = 10;
 
   useEffect(() => {
+    const pageSize = 10; 
     const apiUrl = `https://eb-umust.umust302.shop/api/articles/NOTICE?page=${currentPage}&size=${pageSize}`;
 
     fetch(apiUrl)

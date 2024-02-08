@@ -260,3 +260,20 @@ export const ConfirmationButtons = styled.div`
     border-radius: 4px;
   }
 `;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  margin-right: 150px;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const PaginationItem = styled.div`
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: ${({ active }) => (active ? '#ddd' : 'transparent')};
+  border-radius: 4px;
+  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+`;

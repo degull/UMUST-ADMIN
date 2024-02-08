@@ -57,10 +57,12 @@ export const NoticeContent = styled.div`
   font-size: 16px;
   color: #555;
   text-align: center;
+  margin-left: -10px;
+  
 `;
 
 export const Create = styled.div`
-  margin-right: 200px;
+  margin-right: 260px;
   text-align: center;
   display: flex;
   font-size: 12px;
@@ -68,7 +70,7 @@ export const Create = styled.div`
 `;
 
 export const PostListLabel = styled.div`
-   font-size: 16px;
+   font-size: 12px;
    font-weight: bold;
    flex: 1;
    padding: 2px;
@@ -94,9 +96,10 @@ export const NoticeId = styled.div`
 `;
 
 export const Date = styled.div`
-  margin-right: 490px;
+  margin-right: 500px;
   text-align: center;
   display: flex;
+  font-size: 11px;
 
 `;
 
@@ -314,6 +317,7 @@ export const EventItem = styled.div`
 
 export const PaginationContainer = styled.div`
   display: flex;
+  margin-right: 150px;
   justify-content: center;
   margin-top: 20px;
 `;

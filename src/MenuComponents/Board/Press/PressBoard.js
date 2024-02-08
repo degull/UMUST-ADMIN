@@ -8,20 +8,33 @@ const formatDate = (timestamp) => {
   return new Date(timestamp).toLocaleString('en-US', options);
 };
 
+
+const generatePageNumbers = (totalPages) => {
+   return Array.from({ length: totalPages }, (_, i) => i + 1);
+ };
+
 const PressBoard = () => {
   const [presses, setPresses] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const pageSize = 10;
 
   useEffect(() => {
-    const pageSize = 10; 
-    const apiUrl = `https://eb-umust.umust302.shop/api/articles/NEWS?page=${currentPage}&size=${pageSize}`;
+   const pageSize = 10; 
+   const apiUrl = `https://eb-umust.umust302.shop/api/articles/NEWS?page=${currentPage}&size=${pageSize}`;
 
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => setPresses(data.content))
-      .catch(error => console.error('보도자료 로딩 에러 발생', error));
-  }, [currentPage]);
+   fetch(apiUrl)
+     .then(response => response.json())
+     .then(data => {
+       if (Array.isArray(data.content)) {
+         setPresses(data.content);
+         setTotalPages(data.totalPages);
+       } else {
+         console.error('API 응답의 content 속성이 배열이 아닙니다:', data);
+       }
+     })
+     .catch(error => console.error('게시글을 불러오는 중 오류 발생:', error));
+ }, [currentPage]);
 
   const handleEditNews = (pressId) => {
     console.log(`Editing News with ID : ${pressId}`);
@@ -55,13 +68,17 @@ const PressBoard = () => {
         ))}
       </S.PressContent>
 
-      <div>
-        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>
-          이전 페이지
-        </button>
-        <span>페이지 {currentPage + 1}</span>
-        <button onClick={() => setCurrentPage(currentPage + 1)}>다음 페이지</button>
-      </div>
+      <S.PaginationContainer>
+        {generatePageNumbers(totalPages).map((pageNumber) => (
+          <S.PaginationItem
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber - 1)}
+            active={currentPage === pageNumber - 1}
+          >
+            {pageNumber}
+          </S.PaginationItem>
+        ))}
+      </S.PaginationContainer>
     </S.Container>
   );
 };
