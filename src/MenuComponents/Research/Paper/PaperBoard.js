@@ -2,24 +2,26 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
 import Main from '../../../MainComponents/Main';
 import * as S from './Paper.styled';
+import { Link } from 'react-router-dom';
 
 const PaperBoard = () => {
-  const [paperDetails, setPaperDetails] = useState([]);
-
-  useEffect(() => {
-    const fetchPaperDetails = async () => {
-      try {
-        const response = await axios.get('https://eb-umust.umust302.shop/api/thesis');
-        const paperList = response.data;
-
-        setPaperDetails(paperList);
-      } catch (error) {
-        console.error('Error fetching paper details:', error);
-      }
-    };
-
-    fetchPaperDetails();
-  }, []);
+   const [paperDetails, setPaperDetails] = useState([]);
+ 
+   useEffect(() => {
+     const fetchPaperDetails = async () => {
+       try {
+         const response = await axios.get('https://eb-umust.umust302.shop/api/thesis');
+         const paperList = response.data;
+ 
+         setPaperDetails(paperList);
+       } catch (error) {
+         console.error('Error fetching paper details:', error);
+       }
+     };
+ 
+     fetchPaperDetails();
+   }, []);
+ 
 
   return (
     <S.Container>
@@ -39,7 +41,11 @@ const PaperBoard = () => {
           </S.PaperDetail>
           <S.PaperDetail><S.subPaper>{paper.date}</S.subPaper></S.PaperDetail>
           <S.PaperDetail>
-          <S.subPaper><a href={paper.link}>{paper.link}</a></S.subPaper>
+            <S.subPaper>
+              <a href={`//${paper.link}`} target="_blank">
+                <img src="/img/link.png" alt="Link Icon" style={{ width: '20px', height: '20px' }} />
+              </a>
+            </S.subPaper>
           </S.PaperDetail>
         </S.PaperHeader>
       ))}

@@ -168,3 +168,11 @@ export const subApi = styled.div`
    color: #636262;
    margin-bottom: 8px;
 `;
+
+export const Modal = styled.div`
+  /* Styles for the modal container */
+`;
+
+export const ModalContent = styled.div`
+  /* Styles for the modal content */
+`;

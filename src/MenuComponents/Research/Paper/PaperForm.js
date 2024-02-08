@@ -3,13 +3,20 @@ import axios from 'axios';
 import * as S from './Paper.styled';
 import Main from '../../../MainComponents/Main';
 
+import { useNavigate } from 'react-router-dom';
+
+
 const PaperForm = ({ onPaperSubmit }) => {
   const [title, setTitle] = useState('');
   const [journal, setJournal] = useState('');
   const [authors, setAuthors] = useState('');
   const [date, setDate] = useState('');
   const [link, setLink] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
 
+
+
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,9 +43,21 @@ const PaperForm = ({ onPaperSubmit }) => {
       setDate('');
       setLink('');
 
+      // Open the modal
+      setModalOpen(true);
+
+      // Automatically redirect after a delay (e.g., 3 seconds)
+      setTimeout(() => {
+         navigate('/Research/papers');
+       }, 3000);
+
     } catch (error) {
       console.error('논문 작성 중 오류 발생:', error);
     }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -93,6 +112,16 @@ const PaperForm = ({ onPaperSubmit }) => {
           </S.FormButton>
         </S.PaperForm>
       </S.FormContainer>
+
+       {/* Modal for "등록이 완료되었습니다" */}
+       {isModalOpen && (
+        <S.Modal>
+          <S.ModalContent>
+            <p>등록이 완료되었습니다.</p>
+            <button onClick={closeModal}>확인</button>
+          </S.ModalContent>
+        </S.Modal>
+      )}
     </S.PaperFormContainer>
   );
 };
