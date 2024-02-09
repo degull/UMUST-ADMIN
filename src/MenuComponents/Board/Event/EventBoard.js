@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Main from '../../../MainComponents/Main';
 import * as S from './Event.styled';
+import axios from 'axios';
 
 const formatDate = (timestamp) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -35,6 +36,27 @@ const EventBoard = () => {
      })
      .catch(error => console.error('게시글을 불러오는 중 오류 발생:', error));
  }, [currentPage]);
+
+
+ const handleViewCount = async (eventId) => {
+   try {
+     // Update the view count for the specific notice
+     await axios.put(`https://eb-umust.umust302.shop/api/articles/${eventId}/views`);
+     
+     // Fetch the updated notice list after updating the view count
+     const updatedEvents = await fetchEvents();
+     setEvents(updatedEvents);
+   } catch (error) {
+     console.error('조회수 업데이트 중 오류 발생:', error);
+   }
+ };
+
+ const fetchEvents = async () => {
+   const response = await fetch(`https://eb-umust.umust302.shop/api/articles/EVENT?page=${currentPage}&size=${pageSize}`);
+   const data = await response.json();
+   return Array.isArray(data.content) ? data.content : [];
+ };
+
   const handleEditEvent = (eventId) => {
     console.log(`Editing Event with ID : ${eventId}`);
   };
@@ -51,16 +73,18 @@ const EventBoard = () => {
         <S.PostListLabel>제목</S.PostListLabel>
         <S.PostListLabel>작성자</S.PostListLabel>
         <S.PostListLabel>작성일</S.PostListLabel>
+        <S.PostListLabel>조회수</S.PostListLabel>
       </S.EventHeader>
 
       <S.EventContent>
         {Array.isArray(events) && events.map((event, index) => (
-          <Link key={event.id} to={`/Board/events/${event.id}`}>
+          <Link key={event.id} to={`/Board/events/${event.id}`} onClick={() => handleViewCount(event.id)}>
             <S.EventItem>
               <S.EventId>{index + 1 + currentPage * pageSize}</S.EventId>
               <S.ItemContent>{event.title.length > 13 ? `${event.title.substring(0, 13)}...` : event.title}</S.ItemContent>
               <S.Create><span>{event.createdBy}</span></S.Create>
               <S.Date><span>{formatDate(event.createdAt)}</span></S.Date>
+              <S.ViewCount>조회수: {event.view}</S.ViewCount>
             </S.EventItem>
           </Link>
         ))}

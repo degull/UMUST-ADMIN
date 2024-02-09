@@ -45,45 +45,48 @@ export const EventHeader = styled.div`
 `;
 
 export const PostListLabel = styled.div`
-   font-size: 16px;
+   font-size: 12px;
    font-weight: bold;
    flex: 1;
    padding: 2px;
 `;
 
+/* ----- */
 export const EventContent = styled.div`
-  font-size: 16px;
+  font-size: 10px;
   color: #555;
   padding: 30px 20px;
-  font-size: 16px;
-  color: #555;
   text-align: center;
+  margin-left: -20px;
 `;
 
 export const ItemContent = styled.div`
   flex: 1;
   text-align: center;
-  margin-left: 8px;
   font-size: 12px;
+  text-align: left;
+  margin-left: 200px;
 `;
 
 export const EventId = styled.div`
   margin-right: 30px;
+  font-size: 11px;
   text-align: center;
   display: flex;
 `;
 
 export const Create = styled.div`
-  margin-right: 200px;
+  margin-right: 185px;
   text-align: center;
   display: flex;
   font-size: 12px;
 `;
 
 export const Date = styled.div`
-  margin-right: 490px;
+  margin-right: 175px;
   text-align: center;
   display: flex;
+  font-size: 11px;
   
 `;
 
@@ -97,11 +100,23 @@ export const View = styled.div`
 export const EventItem = styled.div`
   display: flex;
   border-bottom: 1px solid #e0e0e0;
-  padding: 10px;
+  padding: 8px;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px 10px;
+  margin-bottom: 10px;
+  width: 1200px;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
 `;
+
+export const ViewCount = styled.div`
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  margin-right: 190px;
+`;
+
 
 
 export const EventFormContainer = styled.div`
@@ -190,7 +205,7 @@ export const EventDetailContainer = styled.div`
 `;
 
 export const EventTitle = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
   text-align: center;
@@ -223,8 +238,9 @@ export const Buttons = styled.div`
 `;
 
 export const DetailContainer = styled.div`
-width: 800px;
+width: 1000px;
 margin: 30px auto;
+margin-right: 150px;
 background-color: #fff;
 padding: 20px;
 border-radius: 8px;

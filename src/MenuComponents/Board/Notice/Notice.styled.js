@@ -50,14 +50,7 @@ export const NoticeHeader = styled.div`
    width: 1200px;
 `;
 
-export const NoticeContent = styled.div`
-  font-size: 10px;
-  color: #555;
-  padding: 30px 20px;
-  text-align: center;
-  margin-left: -20px;
-  
-`;
+
 
 export const Create = styled.div`
   margin-right: 185px;
@@ -72,6 +65,16 @@ export const PostListLabel = styled.div`
    font-weight: bold;
    flex: 1;
    padding: 2px;
+`;
+
+/* -------- */
+export const NoticeContent = styled.div`
+  font-size: 10px;
+  color: #555;
+  padding: 30px 20px;
+  text-align: center;
+  margin-left: -20px;
+  
 `;
 
 export const NoticeItem = styled.div`
@@ -114,6 +117,13 @@ export const ItemContent = styled.div`
   font-size: 12px;
   text-align: left;
   margin-left: 200px;
+`;
+
+export const ViewCount = styled.div`
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  margin-right: 190px;
 `;
 
 export const ItemActions = styled.div`
@@ -162,13 +172,14 @@ export const NoticeDetailContainer = styled.div`
   width: 100%;
   `;
 
-  export const DetailContainer = styled.div`
-    width: 800px;
-  margin: 30px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+export const DetailContainer = styled.div`
+width: 1000px;
+margin: 30px auto;
+margin-right: 150px;
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 
@@ -335,9 +346,3 @@ export const PaginationItem = styled.div`
 export const NoticeFiles = styled.div`
 `;
 
-export const ViewCount = styled.div`
-  font-size: 12px;
-  text-align: center;
-  display: flex;
-  margin-right: 190px;
-`;

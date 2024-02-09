@@ -98,7 +98,6 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
         <S.NoticeDetails>
           <span>작성자: {notice.createdBy || '관리자'}</span>
           <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>
-          <span>조회수: {notice.views || 0}</span>
         </S.NoticeDetails>
         <S.Buttons>
           {/* 삭제 및 수정 버튼 */}

@@ -112,7 +112,7 @@ export const MarkdownPreviewContainer = styled.div`
 export const AlbumContent = styled.div`
   font-size: 16px;
   color: #555;
-  padding: 30px 20px;
+  padding: 0 20px;
   text-align: center;
 `;
 
@@ -128,6 +128,8 @@ export const AlbumItem = styled.div`
   border-radius: 8px;
   padding: 15px;
   text-align: center;
+  width: 380px;
+  height: 250px;
 `;
 
 export const Thumbnail = styled.div`
@@ -140,14 +142,15 @@ export const Thumbnail = styled.div`
 `;
 
 export const AlbumTitle = styled.h3`
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 800;
+  margin: 14px 0;
 `;
 
 export const CreateDate = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: #777;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 `;
 
 export const EditButton = styled.button`
@@ -192,8 +195,9 @@ export const AlbumDetailContainer = styled.div`
 
 
 export const DetailContainer = styled.div`
-width: 800px;
+width: 1000px;
 margin: 30px auto;
+margin-right: 150px;
 background-color: #fff;
 padding: 20px;
 border-radius: 8px;
@@ -201,9 +205,9 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const AlbumTitle1 = styled.div`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   text-align: center;
 `;
 
