@@ -157,26 +157,26 @@ const NoticeForm = () => {
           
           <S.Formcategory>본문</S.Formcategory>
           <FileDrop
-            onDragOver={() => setBoardColor(true)}
-            onDragLeave={() => setBoardColor(false)}
-            onDrop={(files) => {
-              if (files.length === 1) {
-                handleFileUpload(files[0]);
-              } else {
-                alert('이미지는 한 개씩 업로드해주세요.');
-              }
-            }}
-          >
-            <MDEditor
-              value={markdownContent}
-              onChange={handleEditorChange}
-              preview="edit"
-              height={500}
-              onPaste={handlePaste}
-              style={{ backgroundColor: boardColor ? '#adb5bd' : null }}
-              ref={editorRef}
-            />
-          </FileDrop>
+        onDragOver={() => setBoardColor(true)}
+        onDragLeave={() => setBoardColor(false)}
+        onDrop={(files) => {
+          if (files.length === 1) {
+            handleFileUpload(files[0]);
+          } else {
+            alert('이미지는 한 개씩 업로드해주세요.');
+          }
+        }}
+      >
+        <MDEditor
+          value={markdownContent}
+          onChange={handleEditorChange}
+          preview="edit"
+          height={500}
+          onPaste={handlePaste}
+          style={{ backgroundColor: boardColor ? '#adb5bd' : null }}
+          ref={editorRef}
+        />
+      </FileDrop>
           
           <S.File>
           <input type="file" multiple onChange={handleFileSelection} />

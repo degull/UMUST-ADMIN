@@ -53,6 +53,8 @@ const NoticeBoard = () => {
     const data = await response.json();
     return Array.isArray(data.content) ? data.content : [];
   };
+
+  
   return (
     <S.Container>
       <Main />

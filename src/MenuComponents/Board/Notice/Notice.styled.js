@@ -317,6 +317,8 @@ export const ConfirmationButtons = styled.div`
   }
 `;
 
+
+
 export const EventItem = styled.div`
   display: flex;
   border-bottom: 1px solid #e0e0e0;
@@ -325,6 +327,8 @@ export const EventItem = styled.div`
   justify-content: space-between;
   margin-bottom: 10px 10px;
 `;
+
+
 
 export const PaginationContainer = styled.div`
   display: flex;
