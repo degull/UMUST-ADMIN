@@ -94,7 +94,7 @@ const EventDetail = ({ onDelete, onEdit }) => {
 
       <S.EventDetails>
         <span>작성자 : {event.createBy || '관리자'}</span>
-        <span>작성시간 : {(new Date(event.createBy)).toLocaleString() || '알수없음'}</span>
+        <span>작성 시간: {(new Date(event.createdAt)).toLocaleString() || '알 수 없음'}</span>
       </S.EventDetails>
 
       <S.Buttons>

@@ -51,18 +51,16 @@ export const NoticeHeader = styled.div`
 `;
 
 export const NoticeContent = styled.div`
-  font-size: 16px;
+  font-size: 10px;
   color: #555;
   padding: 30px 20px;
-  font-size: 16px;
-  color: #555;
   text-align: center;
-  margin-left: -10px;
+  margin-left: -20px;
   
 `;
 
 export const Create = styled.div`
-  margin-right: 260px;
+  margin-right: 185px;
   text-align: center;
   display: flex;
   font-size: 12px;
@@ -79,10 +77,10 @@ export const PostListLabel = styled.div`
 export const NoticeItem = styled.div`
   display: flex;
   border-bottom: 1px solid #e0e0e0;
-  padding: 10px;
+  padding: 8px;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px 10px;
+  margin-bottom: 10px;
+  width: 1200px;
 
   &:hover {
     background-color: #f9f9f9;
@@ -91,12 +89,13 @@ export const NoticeItem = styled.div`
 
 export const NoticeId = styled.div`
   margin-right: 30px;
+  font-size: 11px;
   text-align: center;
   display: flex;
 `;
 
 export const Date = styled.div`
-  margin-right: 500px;
+  margin-right: 175px;
   text-align: center;
   display: flex;
   font-size: 11px;
@@ -112,8 +111,9 @@ export const View = styled.div`
 export const ItemContent = styled.div`
   flex: 1;
   text-align: center;
-  margin-left: 8px;
   font-size: 12px;
+  text-align: left;
+  margin-left: 200px;
 `;
 
 export const ItemActions = styled.div`
@@ -330,4 +330,14 @@ export const PaginationItem = styled.div`
   background-color: ${({ active }) => (active ? '#ddd' : 'transparent')};
   border-radius: 4px;
   font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+`;
+
+export const NoticeFiles = styled.div`
+`;
+
+export const ViewCount = styled.div`
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  margin-right: 190px;
 `;

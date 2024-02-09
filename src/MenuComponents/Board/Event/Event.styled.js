@@ -277,3 +277,6 @@ export const PaginationItem = styled.div`
   border-radius: 4px;
   font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
 `;
+
+export const NoticeFiles = styled.div`
+`;

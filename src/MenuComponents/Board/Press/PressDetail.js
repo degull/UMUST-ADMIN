@@ -92,7 +92,7 @@ const PressDetail = ({ onDelete, onEdit }) => {
 
       <S.PressDetails>
         <span>작성자 : {press.createBy || '관리자'}</span>
-        <span>작성시간 : {(new Date(press.createBy)).toLocaleString() || '알수없음'}</span>
+        <span>작성 시간: {(new Date(press.createdAt)).toLocaleString() || '알 수 없음'}</span>
       </S.PressDetails>
 
       <S.Buttons>

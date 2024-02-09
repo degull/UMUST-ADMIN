@@ -94,7 +94,7 @@ const PaperForm = ({ onPaperSubmit }) => {
           <S.Formcategory>Date</S.Formcategory>
           <S.FormInput
             type='text'
-            placeholder='예 : OCT 2023'
+            placeholder='예 : 2023-10-10'
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />

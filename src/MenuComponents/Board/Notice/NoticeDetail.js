@@ -50,18 +50,24 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
       if (deleteResponse.status === 200) {
         console.log('Notice deleted successfully.');
         onDelete(noticeId);
-
-        navigate('/Board/notices');
+  
+        // Automatically refresh the page
+        window.location.reload();
+  
+        // Automatically navigate to the notice board after a short delay (e.g., 1 second)
+        setTimeout(() => {
+          navigate('/Board/notices');
+        }, 1000);
       } else {
         console.error('Failed to delete notice.');
       }
     } catch (error) {
       console.error('Error deleting notice:', error);
     }
-
+  
     setShowConfirmation(false);
   };
-
+  
 
   const handleCancelDelete = () => {
     setShowConfirmation(false);
@@ -92,6 +98,7 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
         <S.NoticeDetails>
           <span>작성자: {notice.createdBy || '관리자'}</span>
           <span>작성 시간: {(new Date(notice.createdAt)).toLocaleString() || '알 수 없음'}</span>
+          <span>조회수: {notice.views || 0}</span>
         </S.NoticeDetails>
         <S.Buttons>
           {/* 삭제 및 수정 버튼 */}
@@ -110,9 +117,18 @@ const NoticeDetail = ({ onDelete, onEdit }) => {
             </S.ConfirmationPopupContent>
           </S.ConfirmationPopup>
         )}
+
+        {notice.files && notice.files.length > 0 && (
+          <S.NoticeFiles>
+            <span>첨부파일:</span>
+            {notice.files.map((file) => (
+              <div key={file.fileId}>
+                <a href={file.fileURL} download>{file.originalFileName}</a>
+              </div>
+            ))}
+          </S.NoticeFiles>
+        )}
       </S.DetailContainer>
-
-
     </S.NoticeDetailContainer>
   );
 };
