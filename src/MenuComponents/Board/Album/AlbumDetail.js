@@ -8,7 +8,7 @@ import axios from 'axios';
 const AlbumDetail = ({ onDelete, onEdit }) => {
    const navigate = useNavigate();
    const { albumId } = useParams(); 
-   const [ album, setAlbum] = useState(null);
+   const [ album, setAlbum ] = useState(null);
    const [showConfirmation, setShowConfirmation] = useState(false);
 
 
@@ -75,15 +75,27 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
          <Main />
          <S.DetailContainer>
             <S.AlbumTitle1>{album.title || '제목 없음'}</S.AlbumTitle1>
-            <ReactMarkdown>{album.content}</ReactMarkdown>
+            <ReactMarkdown
+               components={{
+                  img: ({ alt, src }) => (
+                     <img
+                        alt={alt}
+                        src={src}
+                        style={{ width: '500px', height: 'auto' }} // Add styling for fixed size
+                     />
+                  ),
+               }}
+            >
+               {album.content}
+            </ReactMarkdown>
 
-            {album.files && album.files.length > 0 && (
+{/*             {album.files && album.files.length > 0 && (
           <S.AlbumImages>
             {album.files.map((file) => (
               <img key={file.fileId} src={file.fileURL} alt={`Attached Image ${file.fileId}`} />
             ))}
           </S.AlbumImages>
-        )}
+        )} */}
 
         <S.AlbumDetails>
             <span>작성자: {album.createdBy || '짱구'}</span>

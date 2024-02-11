@@ -1,10 +1,9 @@
+// PaperForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import * as S from './Paper.styled';
 import Main from '../../../MainComponents/Main';
-
 import { useNavigate } from 'react-router-dom';
-
 
 const PaperForm = ({ onPaperSubmit }) => {
   const [title, setTitle] = useState('');
@@ -14,9 +13,8 @@ const PaperForm = ({ onPaperSubmit }) => {
   const [link, setLink] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
 
-
-
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,10 +44,10 @@ const PaperForm = ({ onPaperSubmit }) => {
       // Open the modal
       setModalOpen(true);
 
-      // Automatically redirect after a delay (e.g., 3 seconds)
+      // Delay the navigation after showing the modal
       setTimeout(() => {
-         navigate('/Research/papers');
-       }, 3000);
+        navigate('/Research/papers');
+      }, 3000); // Adjust the delay time as needed
 
     } catch (error) {
       console.error('논문 작성 중 오류 발생:', error);
@@ -58,6 +56,11 @@ const PaperForm = ({ onPaperSubmit }) => {
 
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const handlePaperSubmit = (data) => {
+    // Handle the submission data
+    console.log('Paper submitted:', data);
   };
 
   return (
@@ -107,14 +110,14 @@ const PaperForm = ({ onPaperSubmit }) => {
             onChange={(e) => setLink(e.target.value)}
           />
 
-         <S.FormButton type="submit">
+          <S.FormButton type="submit">
             작성
           </S.FormButton>
         </S.PaperForm>
       </S.FormContainer>
 
-       {/* Modal for "등록이 완료되었습니다" */}
-       {isModalOpen && (
+      {/* Modal for "등록이 완료되었습니다" */}
+      {isModalOpen && (
         <S.Modal>
           <S.ModalContent>
             <p>등록이 완료되었습니다.</p>

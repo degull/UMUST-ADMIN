@@ -159,6 +159,7 @@ export const PaperDetail = styled.p`
   margin-left: 720px;
   text-align: left;
 `;
+
 export const TitleContainer = styled.div`
 
 `;
@@ -170,9 +171,38 @@ export const subApi = styled.div`
 `;
 
 export const Modal = styled.div`
-  /* Styles for the modal container */
+  display: ${(props) => (props.isOpen ? "block" : "none")};
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  z-index: 1000;
 `;
 
 export const ModalContent = styled.div`
-  /* Styles for the modal content */
+  text-align: center;
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
 `;
