@@ -6,7 +6,7 @@ import Main from '../../../MainComponents/Main';
 import MDEditor from '@uiw/react-md-editor';
 import { useNavigate } from 'react-router-dom';
 
-const NoticeForm = () => {
+const NoticeForm = ({ noticeData, onEditComplete }) => {
   const navigate = useNavigate();
   const [markdownContent, setMarkdownContent] = useState('');
   const [boardColor, setBoardColor] = useState(false);
@@ -16,6 +16,7 @@ const NoticeForm = () => {
   const titleRef = useRef(null);
   const formData = new FormData();
 
+  
 
   const handleFileUpload = async (file) => {
     const allowedFileTypes = ['pdf', 'ppt', 'pptx', 'hwp'];
@@ -124,8 +125,10 @@ const NoticeForm = () => {
         formData.append("file", file);
       });
 
+      const apiUrl = noticeData ? `https://umust302.shop/api/articles/${noticeData.id}` : 'https://umust302.shop/api/articles';
+
       const response = await axios.post(
-        'https://eb-umust.umust302.shop/api/articles',
+        apiUrl,
         formData,
         {
           headers: {
@@ -135,7 +138,12 @@ const NoticeForm = () => {
       );
 
       console.log(response.data);
-      navigate('/Board/notices');
+      // 업데이트일 경우 부모 컴포넌트에 편집 완료를 알림
+      if (noticeData) {
+        onEditComplete();
+      } else {
+        navigate('/Board/notices');
+      }
     } catch (error) {
       console.error('글 작성 오류:', error);
     }
@@ -147,6 +155,7 @@ const NoticeForm = () => {
       <S.FormContainer>
         <S.FormTitle>공지 작성</S.FormTitle>
 
+        {/* 제목 및 본문 입력 폼 */}
         <S.NoticeForm onSubmit={handleSubmit}>
           <S.Formcategory>제목:</S.Formcategory>
           <S.FormInput 
@@ -156,36 +165,40 @@ const NoticeForm = () => {
           />
           
           <S.Formcategory>본문</S.Formcategory>
+          {/* Markdown 에디터 */}
           <FileDrop
-        onDragOver={() => setBoardColor(true)}
-        onDragLeave={() => setBoardColor(false)}
-        onDrop={(files) => {
-          if (files.length === 1) {
-            handleFileUpload(files[0]);
-          } else {
-            alert('이미지는 한 개씩 업로드해주세요.');
-          }
-        }}
-      >
-        <MDEditor
-          value={markdownContent}
-          onChange={handleEditorChange}
-          preview="edit"
-          height={500}
-          onPaste={handlePaste}
-          style={{ backgroundColor: boardColor ? '#adb5bd' : null }}
-          ref={editorRef}
-        />
-      </FileDrop>
+            onDragOver={() => setBoardColor(true)}
+            onDragLeave={() => setBoardColor(false)}
+            onDrop={(files) => {
+              if (files.length === 1) {
+                handleFileUpload(files[0]);
+              } else {
+                alert('이미지는 한 개씩 업로드해주세요.');
+              }
+            }}
+          >
+            <MDEditor
+              value={markdownContent}
+              onChange={handleEditorChange}
+              preview="edit"
+              height={500}
+              onPaste={handlePaste}
+              style={{ backgroundColor: boardColor ? '#adb5bd' : null }}
+              ref={editorRef}
+            />
+          </FileDrop>
           
+          {/* 파일 업로드 폼 */}
           <S.File>
-          <input type="file" multiple onChange={handleFileSelection} />
-          <div>{attachedFilesList}</div>
+            <input type="file" multiple onChange={handleFileSelection} />
+            <div>{attachedFilesList}</div>
           </S.File>
 
+          {/* 작성 완료 버튼 */}
           <S.FormButton type="submit">작성</S.FormButton>
         </S.NoticeForm>
 
+        {/* Markdown 미리보기 */}
         <S.MarkdownPreviewContainer>
           <h2>Markdown 미리보기</h2>
           <S.NoticeContent>{markdownContent}</S.NoticeContent>
@@ -194,5 +207,4 @@ const NoticeForm = () => {
     </S.NoticeFormContainer>
   );
 };
-
 export default NoticeForm;
