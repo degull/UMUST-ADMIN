@@ -138,7 +138,6 @@ const NoticeForm = ({ noticeData, onEditComplete }) => {
       );
 
       console.log(response.data);
-      // 업데이트일 경우 부모 컴포넌트에 편집 완료를 알림
       if (noticeData) {
         onEditComplete();
       } else {
@@ -155,7 +154,6 @@ const NoticeForm = ({ noticeData, onEditComplete }) => {
       <S.FormContainer>
         <S.FormTitle>공지 작성</S.FormTitle>
 
-        {/* 제목 및 본문 입력 폼 */}
         <S.NoticeForm onSubmit={handleSubmit}>
           <S.Formcategory>제목:</S.Formcategory>
           <S.FormInput 
@@ -165,7 +163,6 @@ const NoticeForm = ({ noticeData, onEditComplete }) => {
           />
           
           <S.Formcategory>본문</S.Formcategory>
-          {/* Markdown 에디터 */}
           <FileDrop
             onDragOver={() => setBoardColor(true)}
             onDragLeave={() => setBoardColor(false)}
@@ -198,7 +195,6 @@ const NoticeForm = ({ noticeData, onEditComplete }) => {
           <S.FormButton type="submit">작성</S.FormButton>
         </S.NoticeForm>
 
-        {/* Markdown 미리보기 */}
         <S.MarkdownPreviewContainer>
           <h2>Markdown 미리보기</h2>
           <S.NoticeContent>{markdownContent}</S.NoticeContent>

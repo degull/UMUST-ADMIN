@@ -1,7 +1,6 @@
-// ConfirmationPopup.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as S from './Notice.styled'; // Import your styled components
+import * as S from './Notice.styled';
 
 const ConfirmationPopup = ({ onConfirm, onCancel }) => {
   return (

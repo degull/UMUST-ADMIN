@@ -1,4 +1,3 @@
-// Notice.js
 import React from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import NoticeDetail from './NoticeDetail';
@@ -29,7 +28,6 @@ const Notice = () => {
   const handleCreateNotice = (newNotice) => {
     // 공지 생성 로직 구현
     console.log('Creating new notice:', newNotice);
-    // 서버로 Notice를 생성하는 API 호출
   };
 
   const sampleNotices = [

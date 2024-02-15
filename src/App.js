@@ -5,6 +5,10 @@ import Main from './MainComponents/Main';
 /* ---------------------------------------------------------------------- */
 
 import Info from './MenuComponents/Product/Info';
+import InfoForm from './MenuComponents/Product/InfoForm';
+import InfoBoard from './MenuComponents/Product/InfoBoard';
+import InfoDetail from './MenuComponents/Product/InfoDetail';
+
 /* ---------------------------------------------------------------------- */
 import Data from './MenuComponents/CRO/Data';
 
@@ -73,10 +77,13 @@ export default function App() {
 
         {/* 제품 */}
         <Route path="/product/info" element={<Info />} />
+        <Route path="/product/infos" element={<InfoBoard />} /> 
+        <Route path="/product/infos/create" element={<InfoForm />} /> 
+        <Route path="/product/infos/:infoId" element={<InfoDetail />} /> 
 
         {/* CRO 서비스 */}
         <Route path="/cro/data" element={<Data />} />
-
+        
         {/* 알림마당 */}
         <Route path="/Board/notice" element={<Notice />} />
         <Route path="/Board/event" element={<Event />} />

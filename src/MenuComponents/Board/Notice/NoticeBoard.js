@@ -37,10 +37,8 @@ const NoticeBoard = () => {
 
   const handleViewCount = async (noticeId) => {
     try {
-      // Update the view count for the specific notice
       await axios.put(`https://eb-umust.umust302.shop/api/articles/${noticeId}/views`);
       
-      // Fetch the updated notice list after updating the view count
       const updatedNotices = await fetchNotices();
       setNotices(updatedNotices);
     } catch (error) {

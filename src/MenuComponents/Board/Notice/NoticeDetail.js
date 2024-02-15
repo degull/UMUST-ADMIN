@@ -79,12 +79,11 @@ const NoticeDetail = ({ onDelete }) => {
     <S.NoticeDetailContainer>
       <Main />
       <S.DetailContainer>
-        {editMode ? (
+      {editMode ? (
           <NoticeForm
             noticeData={notice}
             onEditComplete={() => {
               setEditMode(false);
-              // 다시 데이터를 불러옴 (수정된 내용 반영)
               fetchNoticeById();
             }}
           />
