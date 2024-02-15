@@ -60,6 +60,9 @@ import PressDetail from './MenuComponents/Board/Press/PressDetail';
 import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
 import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
 import AlbumDetail from './MenuComponents/Board/Album/AlbumDetail';
+import BlogBoard from './MenuComponents/Research/Blog/BlogBoard';
+import BlogForm from './MenuComponents/Research/Blog/BlogForm';
+import BlogDetail from './MenuComponents/Research/Blog/BlogDetail';
 
 export default function App() {
   return (
@@ -68,13 +71,20 @@ export default function App() {
         <Route path="/" element={<Main />} />
 
         {/* 연구개발 */}
-        <Route path="/Research/paper" element={<Paper />} />
         <Route path="/Research/patent" element={<Patent />} />
         <Route path="/Research/certification" element={<Certification />} />
+
+
+        {/* 블로그 */}
         <Route path="/Research/blog" element={<Blog />} />
+        <Route path="/Research/blogs" element={<BlogBoard />} />
+        <Route path="/Research/blogs/create" element={<BlogForm />} />
+        <Route path="/Research/blogs/:blogId" element={<BlogDetail/>}/>
+
 
 
         {/* -논문 */}
+        <Route path="/Research/paper" element={<Paper />} />
         <Route path="/Research/papers" element={<PaperBoard />} /> 
         <Route path="/Research/papers/create" element={<PaperForm />} />
         <Route path="/Research/papers/:paperId" element={<PaperDetail />} />

@@ -18,7 +18,7 @@ const DataDetail = ({ onDelete }) => {
         const response = await fetch(`https://umust302.shop/api/articles/${dataId}`, {
           method: 'PATCH',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'apdplication/json',
           },
         });
         const data = await response.json();
