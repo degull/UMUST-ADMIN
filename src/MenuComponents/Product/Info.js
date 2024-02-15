@@ -7,27 +7,27 @@ export default function Info(){
 
    const navigate = useNavigate();
 
-   const handleDeleteNotice = (noticeId) => {
+   const handleDeleteInfo = (infoId) => {
      // 삭제 로직 구현
-     console.log(`Deleting notice with ID: ${noticeId}`);
+     console.log(`Deleting notice with ID: ${infoId}`);
    };
  
-   const handleEditNotice = (noticeId) => {
+   const handleEditInfo = (infoId) => {
      // 편집 로직 구현
-     console.log(`Editing notice with ID: ${noticeId}`);
+     console.log(`Editing notice with ID: ${infoId}`);
    };
  
-   const handleCreateNotice = (newNotice) => {
+   const handleCreateInfo = (newInfo) => {
      // 공지 생성 로직 구현
-     console.log('Creating new notice:', newNotice);
+     console.log('Creating new notice:', newInfo);
    };
  
-   const sampleNotices = [
+   const sampleInfo = [
      // 샘플 데이터
    ];
  
-   const navigateToCreateNotice = () => {
-     navigate('/Board/notices/create');
+   const navigateToCreateInfo = () => {
+     navigate('/Product/infos/create');
    };
  
 

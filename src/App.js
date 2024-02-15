@@ -11,6 +11,11 @@ import InfoDetail from './MenuComponents/Product/InfoDetail';
 
 /* ---------------------------------------------------------------------- */
 import Data from './MenuComponents/CRO/Data';
+import DataBoard from './MenuComponents/CRO/DataBoard';
+import DataForm from './MenuComponents/CRO/DataForm';
+import DataDetail from './MenuComponents/CRO/DataDetail';
+
+
 
 /* ---------------------------------------------------------------------- */
 
@@ -55,7 +60,6 @@ import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
 import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
 import AlbumDetail from './MenuComponents/Board/Album/AlbumDetail';
 
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -83,6 +87,10 @@ export default function App() {
 
         {/* CRO 서비스 */}
         <Route path="/cro/data" element={<Data />} />
+        <Route path="/cro/datas" element={<DataBoard />} /> 
+        <Route path="/cro/datas/create" element={<DataForm />} /> 
+        <Route path="/cro/datas/:dataId" element={<DataDetail />} /> 
+
         
         {/* 알림마당 */}
         <Route path="/Board/notice" element={<Notice />} />
