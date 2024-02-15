@@ -70,6 +70,9 @@ import AlbumDetail from './MenuComponents/Board/Album/AlbumDetail';
 import BlogBoard from './MenuComponents/Research/Blog/BlogBoard';
 import BlogForm from './MenuComponents/Research/Blog/BlogForm';
 import BlogDetail from './MenuComponents/Research/Blog/BlogDetail';
+import PatentBoard from './MenuComponents/Research/Patent/PatentBoard';
+import PatentForm from './MenuComponents/Research/Patent/PatentForm';
+import PatentDetail from './MenuComponents/Research/Patent/PatentDetail';
 
 export default function App() {
   return (
@@ -78,7 +81,12 @@ export default function App() {
         <Route path="/" element={<Main />} />
 
         {/* 연구개발 */}
+
+        {/* 특허 */}
         <Route path="/Research/patent" element={<Patent />} />
+        <Route path="/Research/patents" element={<PatentBoard />} />
+        <Route path="/Research/patents/create" element={<PatentForm />} />
+        <Route path="/Research/patents/:patentId" element={<PatentDetail/>}/>
 
         {/* 인증현황 */}
         <Route path="/Research/certification" element={<Certification />} />

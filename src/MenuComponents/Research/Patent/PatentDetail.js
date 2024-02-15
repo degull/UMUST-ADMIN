@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import * as S from './Album.styled';
+import * as S from './Patent.styled';
 import Main from '../../../MainComponents/Main';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 
-const AlbumDetail = ({ onDelete, onEdit }) => {
+const PatentDetail = ({ onDelete, onEdit }) => {
    const navigate = useNavigate();
-   const { albumId } = useParams(); 
-   const [ album, setAlbum ] = useState(null);
+   const { patentId } = useParams(); 
+   const [ Patent, setPatent ] = useState(null);
    const [showConfirmation, setShowConfirmation] = useState(false);
-
 
    useEffect(() => {
       const fetchAlbumById = async () => {
         try {
-          const response = await fetch(`https://umust302.shop/api/articles/${albumId}`, {
+          const response = await fetch(`https://umust302.shop/api/articles/${patentId}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
@@ -24,8 +23,8 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
           const data = await response.json();
           
           console.log('Received album data:', data);
-          console.log(albumId)
-          setAlbum(data);
+          console.log(patentId)
+          setPatent(data);
         } catch (error) {
           console.error('Error fetching notice:', error);
         }
@@ -33,9 +32,9 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
   
       // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
       fetchAlbumById();
-    }, [albumId]);
+    }, [patentId]);
   
-    if (!album) {
+    if (!Patent) {
       return <div>로딩 중...</div>;
     }
 
@@ -45,17 +44,17 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
   
     const handleConfirmDelete = async () => {
       try {
-        const deleteResponse = await axios.delete(`https://umust302.shop/api/articles/${albumId}`);
+        const deleteResponse = await axios.delete(`https://umust302.shop/api/articles/${patentId}`);
         if (deleteResponse.status === 200) {
           console.log('press deleted successfully.');
-          onDelete(albumId);
+          onDelete(patentId);
   
-          navigate('/Board/albums');
+          navigate('/Research/patents');
         } else {
-          console.error('Failed to delete album.');
+          console.error('Failed to delete patent.');
         }
       } catch (error) {
-        console.error('Error deleting album:', error);
+        console.error('Error deleting patent:', error);
       }
   
       setShowConfirmation(false);
@@ -66,33 +65,33 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
       setShowConfirmation(false);
     };
     const handleEdit = () => {
-      onEdit(albumId);
-      navigate(`/Board/albums/${albumId}/edit`);
+      onEdit(patentId);
+      navigate(`/Research/patents/${patentId}/edit`);
     };
 
    return (
       <S.AlbumDetailContainer>
          <Main />
          <S.DetailContainer>
-            <S.AlbumTitle1>{album.title || '제목 없음'}</S.AlbumTitle1>
+            <S.AlbumTitle1>{Patent.title || '제목 없음'}</S.AlbumTitle1>
             <ReactMarkdown
                components={{
                   img: ({ alt, src }) => (
                      <img
                         alt={alt}
                         src={src}
-                        style={{ width: '500px', height: 'auto' }} // Add styling for fixed size
+                        style={{ width: '500px', height: 'auto' }}
                      />
                   ),
                }}
             >
-               {album.content}
+               {Patent.content}
             </ReactMarkdown>
 
 
         <S.AlbumDetails>
-            <span>작성자: {album.createdBy || '짱구'}</span>
-            <span>작성 시간: {(new Date(album.createdAt)).toLocaleString() || '알 수 없음'}</span>
+            <span>작성자: {Patent.createdBy || '짱구'}</span>
+            <span>작성 시간: {(new Date(Patent.createdAt)).toLocaleString() || '알 수 없음'}</span>
         </S.AlbumDetails>
 
         <S.Buttons>
@@ -116,4 +115,4 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
    );
 };
 
-export default AlbumDetail;
+export default PatentDetail;

@@ -1,0 +1,82 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Main from '../../../MainComponents/Main';
+import * as S from './Patent.styled';
+
+const formatDate = (timestamp) => {
+   const options = { year: 'numeric', month: 'long', day: 'numeric' };
+   return new Date(timestamp).toLocaleString('en-US', options);
+ };
+ 
+ const generatePageNumbers = (totalPages) => {
+   return Array.from({ length: totalPages }, (_, i) => i + 1);
+ };
+
+const PatentBoard = () => {
+   const [Patents, setPatents] = useState([]);
+   const [currentPage, setCurrentPage] = useState(0);
+   const [totalPages, setTotalPages] = useState(0);
+   const pageSize = 12;
+
+   useEffect(() => {
+      const pageSize = 12; 
+      const apiUrl = `https://eb-umust.umust302.shop/api/articles/PATENT?page=${currentPage}&size=${pageSize}`;
+   
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (Array.isArray(data.content)) {
+            setPatents(data.content);
+            setTotalPages(data.totalPages);
+          } else {
+            console.error('API 응답의 content 속성이 배열이 아닙니다:', data);
+          }
+        })
+        .catch(error => console.error('게시글을 불러오는 중 오류 발생:', error));
+    }, [currentPage]);
+  
+    const handleEditPatent = (patentId) => {
+      console.log(`Editing Patent with ID: ${patentId}`);
+    };
+  
+    const handleDeletePatent = (patentId) => {
+      console.log(`Deleting Patent with ID: ${patentId}`);
+    };
+  
+
+
+   return (
+      <S.Container>
+      <Main />
+      <S.AlbumGrid>
+        {Array.isArray(Patents) && Patents.map(Patents => (
+          <Link key={Patents.id} to={`/Research/Certifications/${Patents.id}`}>
+            <S.AlbumItem>
+              <S.Thumbnail>
+                {/* 이미지와 관련된 데이터가 있는 경우에만 표시 */}
+                {Patents.files && Patents.files.length > 0 && Patents.files[0].fileURL && (
+                  <img src={Patents.files[0].fileURL} alt={`Thumbnail for ${Patents.title}`} />
+                )}
+              </S.Thumbnail>
+              <S.AlbumTitle>{Patents.title}</S.AlbumTitle>
+              <S.CreateDate>{formatDate(Patents.createdAt)}</S.CreateDate>
+            </S.AlbumItem>
+          </Link>
+        ))}
+      </S.AlbumGrid>
+      <S.PaginationContainer>
+        {generatePageNumbers(totalPages).map((pageNumber) => (
+          <S.PaginationItem
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber - 1)}
+            active={currentPage === pageNumber - 1}
+          >
+            {pageNumber}
+          </S.PaginationItem>
+        ))}
+      </S.PaginationContainer>
+    </S.Container>
+   );
+};
+
+export default PatentBoard;
