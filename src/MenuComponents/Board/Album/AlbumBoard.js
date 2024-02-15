@@ -19,7 +19,7 @@ const AlbumBoard = () => {
   const pageSize = 12;
 
   useEffect(() => {
-    const pageSize = 10; 
+    const pageSize = 12; 
     const apiUrl = `https://eb-umust.umust302.shop/api/articles/ALBUM?page=${currentPage}&size=${pageSize}`;
  
     fetch(apiUrl)

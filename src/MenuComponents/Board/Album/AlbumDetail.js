@@ -13,7 +13,7 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
 
 
    useEffect(() => {
-      const fetchNoticeById = async () => {
+      const fetchAlbumById = async () => {
         try {
           const response = await fetch(`https://umust302.shop/api/articles/${albumId}`, {
             method: 'PATCH',
@@ -32,7 +32,7 @@ const AlbumDetail = ({ onDelete, onEdit }) => {
       };
   
       // 컴포넌트가 처음 마운트될 때와 게시글 번호가 변경될 때마다 데이터를 불러옴
-      fetchNoticeById();
+      fetchAlbumById();
     }, [albumId]);
   
     if (!album) {
