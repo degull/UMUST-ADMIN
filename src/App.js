@@ -56,6 +56,13 @@ import EventDetail from './MenuComponents/Board/Event/EventDetail';
 import PressBoard from './MenuComponents/Board/Press/PressBoard';
 import PressForm from './MenuComponents/Board/Press/PressForm';
 import PressDetail from './MenuComponents/Board/Press/PressDetail';
+
+// 인증현황
+import CertificationBoard from './MenuComponents/Research/Certification/CertificationBoard';
+import CertificationForm from './MenuComponents/Research/Certification/CertificationForm';
+import CertificationDetail from './MenuComponents/Research/Certification/CertificationDetail';
+
+
 // 앨범
 import AlbumBoard from './MenuComponents/Board/Album/AlbumBoard';
 import AlbumForm from './MenuComponents/Board/Album/AlbumForm';
@@ -72,8 +79,12 @@ export default function App() {
 
         {/* 연구개발 */}
         <Route path="/Research/patent" element={<Patent />} />
-        <Route path="/Research/certification" element={<Certification />} />
 
+        {/* 인증현황 */}
+        <Route path="/Research/certification" element={<Certification />} />
+        <Route path="/Research/certifications" element={<CertificationBoard />} />
+        <Route path="/Research/certifications/create" element={<CertificationForm />} />
+        <Route path="/Research/certifications/:certificationId" element={<CertificationDetail/>}/>
 
         {/* 블로그 */}
         <Route path="/Research/blog" element={<Blog />} />
