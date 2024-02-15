@@ -45,6 +45,7 @@ import PaperForm from './MenuComponents/Research/Paper/PaperForm';
 import NoticeForm from './MenuComponents/Board/Notice/NoticeForm';  // 추가
 import NoticeBoard from './MenuComponents/Board/Notice/NoticeBoard';
 import NoticeDetail from './MenuComponents/Board/Notice/NoticeDetail';
+
 // 행사정보
 import EventBoard from './MenuComponents/Board/Event/EventBoard';
 import EventForm from './MenuComponents/Board/Event/EventForm';
@@ -86,10 +87,10 @@ export default function App() {
         <Route path="/product/infos/:infoId" element={<InfoDetail />} /> 
 
         {/* CRO 서비스 */}
-        <Route path="/cro/data" element={<Data />} />
-        <Route path="/cro/datas" element={<DataBoard />} /> 
-        <Route path="/cro/datas/create" element={<DataForm />} /> 
-        <Route path="/cro/datas/:dataId" element={<DataDetail />} /> 
+        <Route path="/Cro/data" element={<Data />} />
+        <Route path="/Cro/datas" element={<DataBoard />} /> 
+        <Route path="/Cro/datas/create" element={<DataForm />} /> 
+        <Route path="/Cro/datas/:dataId" element={<DataDetail />} /> 
 
         
         {/* 알림마당 */}

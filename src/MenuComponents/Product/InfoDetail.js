@@ -13,7 +13,6 @@ const InfoDetail = ({ onDelete }) => {
    const [editMode, setEditMode] = useState(false);
    const [showConfirmation, setShowConfirmation] = useState(false);
 
-     // fetchNoticeById 함수 추가
   const fetchInfoById = async () => {
    try {
      const response = await fetch(`https://umust302.shop/api/articles/${infoId}`, {

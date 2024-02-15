@@ -123,7 +123,7 @@ export const DataContent = styled.div`
 `;
 
 /* Board */
-export const InfoHeader = styled.div`
+export const DataHeader = styled.div`
    display: flex;
    background: #f5f4d3;
    padding: 8px;
@@ -138,7 +138,7 @@ export const PostListLabel = styled.div`
    padding: 2px;
 `;
 
-export const InfoItem = styled.div`
+export const DataItem = styled.div`
   display: flex;
   border-bottom: 1px solid #e0e0e0;
   padding: 8px;
@@ -151,7 +151,7 @@ export const InfoItem = styled.div`
   }
 `;
 
-export const InfoId = styled.div`
+export const DataId = styled.div`
   margin-right: 30px;
   font-size: 11px;
   text-align: center;
@@ -215,7 +215,7 @@ export const PaginationItem = styled.div`
 
 /* Detail */
 
-export const InfoDetailContainer = styled.div`
+export const DataDetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -232,14 +232,14 @@ border-radius: 8px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
-export const InfoTitle = styled.div`
+export const DataTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
   text-align: center;
 `;
 
-export const InfoImages = styled.div`
+export const DataImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -253,7 +253,7 @@ export const InfoImages = styled.div`
 `;
 
 
-export const InfoDetails = styled.div`
+export const DataDetails = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -302,6 +302,6 @@ export const ConfirmationButtons = styled.div`
 
 
 
-export const InfoFiles = styled.div`
+export const DataFiles = styled.div`
 `;
 

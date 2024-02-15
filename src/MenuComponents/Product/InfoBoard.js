@@ -48,7 +48,7 @@ const InfoBoard = () => {
     };
   
     const fetchInfos = async () => {
-      const response = await fetch(`https://eb-umust.umust302.shop/api/articles/NOTICE?page=${currentPage}&size=${pageSize}`);
+      const response = await fetch(`https://eb-umust.umust302.shop/api/articles/REFERENCE?page=${currentPage}&size=${pageSize}`);
       const data = await response.json();
       return Array.isArray(data.content) ? data.content : [];
     };
