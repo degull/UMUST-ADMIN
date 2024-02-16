@@ -20,3 +20,10 @@ export const Logo = styled.img`
    height: 30px;
    margin-top: 10px;
 `;
+
+export const HomePage = styled.img`
+   width: 30px;
+   height: 30px;
+   margin-top: 10px;
+   margin-left: 1300px;
+`;
