@@ -59,7 +59,6 @@ const PaperForm = ({ onPaperSubmit }) => {
   };
 
   const handlePaperSubmit = (data) => {
-    // Handle the submission data
     console.log('Paper submitted:', data);
   };
 

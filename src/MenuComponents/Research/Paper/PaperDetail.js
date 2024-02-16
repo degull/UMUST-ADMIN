@@ -1,10 +1,16 @@
 import React from 'react';
+import * as S from './Paper.styled';
+import Main from '../../../MainComponents/Main';
+
 
 const PaperDetail = () => {
    return (
-      <div>
-         논문상세
-      </div>
+      <S.DataDetailContainer>
+      <Main />
+      <S.DetailContainer>
+         
+      </S.DetailContainer>
+      </S.DataDetailContainer>
    );
 };
 

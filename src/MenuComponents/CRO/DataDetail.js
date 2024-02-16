@@ -9,7 +9,7 @@ import DataForm from './DataForm';
 const DataDetail = ({ onDelete }) => {
    const navigate = useNavigate();
    const { dataId } = useParams();
-   const [Data, setData] = useState(null);
+   const [data, setdata] = useState(null);
    const [editMode, setEditMode] = useState(false);
    const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -25,7 +25,7 @@ const DataDetail = ({ onDelete }) => {
         
         console.log('Received press data:', data);
         console.log(dataId);
-        setData(data);
+        setdata(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -36,7 +36,7 @@ const DataDetail = ({ onDelete }) => {
       fetchDataById();
     }, [dataId]);
    
-    if (!Data) {
+    if (!data) {
       return <div>로딩 중...</div>;
     }
    
@@ -79,7 +79,7 @@ const DataDetail = ({ onDelete }) => {
       <S.DetailContainer>
       {editMode ? (
           <DataForm
-            DataData={Data}
+            DataData={data}
             onEditComplete={() => {
               setEditMode(false);
               fetchDataById();
@@ -87,20 +87,20 @@ const DataDetail = ({ onDelete }) => {
           />
         ) : (
           <>
-            <S.DataTitle>{Data.title || '제목 없음'}</S.DataTitle>
-            <ReactMarkdown>{Data.content}</ReactMarkdown>
+            <S.DataTitle>{data.title || '제목 없음'}</S.DataTitle>
+            <ReactMarkdown>{data.content}</ReactMarkdown>
 
-            {Data.files && Data.files.length > 0 && (
+            {data.files && data.files.length > 0 && (
               <S.DataImages>
-                {Data.files.map((file) => (
+                {data.files.map((file) => (
                   <img key={file.fileId} src={file.fileURL} alt={`Attached Image ${file.fileId}`} />
                 ))}
               </S.DataImages>
             )}
 
             <S.DataDetails>
-              <span>작성자: {Data.createdBy || '관리자'}</span>
-              <span>작성 시간: {(new Date(Data.createdAt)).toLocaleString() || '알 수 없음'}</span>
+              <span>작성자: {data.createdBy || '관리자'}</span>
+              <span>작성 시간: {(new Date(data.createdAt)).toLocaleString() || '알 수 없음'}</span>
             </S.DataDetails>
             <S.Buttons>
               <button onClick={handleDelete}>삭제</button>
@@ -119,10 +119,10 @@ const DataDetail = ({ onDelete }) => {
               </S.ConfirmationPopup>
             )}
 
-            {Data.files && Data.files.length > 0 && (
+            {data.files && data.files.length > 0 && (
               <S.DataFiles>
                 <span>첨부파일:</span>
-                {Data.files.map((file) => (
+                {data.files.map((file) => (
                   <div key={file.fileId}>
                     <a href={file.fileURL} download>{file.originalFileName}</a>
                   </div>

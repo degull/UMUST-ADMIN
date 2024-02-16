@@ -15,7 +15,7 @@ const formatDate = (timestamp) => {
 
 
 const DataBoard = () => {
-   const [Datas, setDatas] = useState([]);
+   const [data, setdata] = useState([]);
    const [currentPage, setCurrentPage] = useState(0);
    const [totalPages, setTotalPages] = useState(0);
    const pageSize = 10;
@@ -29,7 +29,7 @@ const DataBoard = () => {
         .then(response => response.json())
         .then(data => {
           if (Array.isArray(data.content)) {
-            setDatas(data.content);
+            setdata(data.content);
             setTotalPages(data.totalPages);
           } else {
             console.error('API 응답의 content 속성이 배열이 아닙니다:', data);
@@ -43,7 +43,7 @@ const DataBoard = () => {
         await axios.put(`https://eb-umust.umust302.shop/api/articles/${dataId}/views`);
         
         const updatedDatas = await fetchDatas();
-        setDatas(updatedDatas);
+        setdata(updatedDatas);
       } catch (error) {
         console.error('조회수 업데이트 중 오류 발생:', error);
       }
@@ -69,8 +69,8 @@ const DataBoard = () => {
 
 
       <S.DataContent>
-  {Array.isArray(Datas) && Datas.map((data, index) => (
-    <Link key={data.id} to={`/Product/Datas/${data.id}`} onClick={() => handleViewCount(data.id)}>
+  {Array.isArray(data) && data.map((data, index) => (
+    <Link key={data.id} to={`/CRO/Datas/${data.id}`} onClick={() => handleViewCount(data.id)}>
       <S.DataItem>
         <S.DataId>{index + 1 + currentPage * pageSize}</S.DataId>
         <S.ItemContent>{data.title.length > 13 ? `${data.title.substring(0, 13)}...` : data.title}</S.ItemContent>

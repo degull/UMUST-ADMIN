@@ -116,10 +116,10 @@ export default function App() {
         <Route path="/product/infos/:infoId" element={<InfoDetail />} /> 
 
         {/* CRO 서비스 */}
-        <Route path="/Cro/data" element={<Data />} />
-        <Route path="/Cro/datas" element={<DataBoard />} /> 
-        <Route path="/Cro/datas/create" element={<DataForm />} /> 
-        <Route path="/Cro/datas/:dataId" element={<DataDetail />} /> 
+        <Route path="/CRO/data" element={<Data />} />
+        <Route path="/CRO/datas" element={<DataBoard />} /> 
+        <Route path="/CRO/datas/create" element={<DataForm />} /> 
+        <Route path="/CRO/datas/:dataId" element={<DataDetail />} /> 
 
         
         {/* 알림마당 */}

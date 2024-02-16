@@ -1,5 +1,3 @@
-// Paper.styled.js
-
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
@@ -206,3 +204,97 @@ export const ModalContent = styled.div`
     }
   }
 `;
+
+
+/* Detail */
+
+export const DataDetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  `;
+
+export const DetailContainer = styled.div`
+width: 1000px;
+margin: 30px auto;
+margin-right: 150px;
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const DataTitle = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+`;
+
+export const DataImages = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    width: 200px;
+    display: flex;
+    margin:0 auto;
+    height: auto;
+  }
+`;
+
+
+export const DataDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #777;
+  font-size: 14px;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 300px;
+  height: 35px;
+  margin-top: 15px;
+  border-color: aliceblue;
+`;
+
+export const ConfirmationPopup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+`;
+
+export const ConfirmationPopupContent = styled.div`
+  text-align: center;
+  p {
+    margin-bottom: 20px;
+  }
+`;
+
+export const ConfirmationButtons = styled.div`
+  button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+`;
+
+
+
+export const DataFiles = styled.div`
+`;
+
